@@ -4,8 +4,9 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack'
 import 'react-native-gesture-handler';
 
-import HomeScreen from './src/screens/Home/Home';
-import AboutScreen from './src/screens/About/About';
+import Home from './src/screens/Home/Home';
+import About from './src/screens/About/About';
+import Splash from './src/screens/Splash/Splash';
 
 
 export default class App extends Component {
@@ -15,16 +16,19 @@ export default class App extends Component {
 }
 
 const AppNavigator = createStackNavigator({
+  Splash: {
+    screen: Splash
+  },
   Home: {
-    screen: HomeScreen
+    screen: Home
   },
   About: {
-    screen: AboutScreen
-  }
+    screen: About
+  },
 },
 {
   headerMode: 'none',
-  initialRouteName: 'Home',
+  initialRouteName: 'Splash',
 });
 
 const AppContainer = createAppContainer(AppNavigator);
