@@ -9,6 +9,7 @@ import About from './src/screens/About/About';
 import Splash from './src/screens/Splash/Splash';
 import Login from './src/screens/Login/Login';
 
+import UserSelect from './src/screens/UserSelect/UserSelect';
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,9 @@ export default class App extends Component {
 const AppNavigator = createStackNavigator({
   Splash: {
     screen: Splash
+  },
+  UserSelect: {
+    screen: UserSelect
   },
   Home: {
     screen: Home
