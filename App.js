@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import Home from './src/screens/Home/Home';
 import About from './src/screens/About/About';
 import Splash from './src/screens/Splash/Splash';
+import Login from './src/screens/Login/Login';
 
 
 export default class App extends Component {
@@ -25,10 +26,13 @@ const AppNavigator = createStackNavigator({
   About: {
     screen: About
   },
+  Login: {
+    screen: Login
+  },
 },
 {
   headerMode: 'none',
-  initialRouteName: 'Splash',
+  initialRouteName: 'Login',
 });
 
 const AppContainer = createAppContainer(AppNavigator);

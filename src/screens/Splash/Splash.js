@@ -9,7 +9,7 @@ export default class Splash extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>ASEEK APP</Text>
+        <Text style={styles.titleText}>ASEEK</Text>
       </View>
     );
   }
