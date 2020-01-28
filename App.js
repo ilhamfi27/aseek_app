@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import Home from './src/screens/Home/Home';
 import About from './src/screens/About/About';
 import Splash from './src/screens/Splash/Splash';
+import Login from './src/screens/Login/Login';
 import UserSelect from './src/screens/UserSelect/UserSelect';
 import BankSoal from './src/screens/BankSoal/BankSoal';
 import Berangkat from './src/screens/Berangkat/Berangkat';
@@ -48,9 +49,16 @@ const AppNavigator = createStackNavigator({
   Rapor: {
     screen: Rapor
   },
+  Login: {
+    screen: Login,
+    // navigationOptions: {
+    //   header: null, //No header in this screen
+    // },
+  },
 },
 {
-  initialRouteName: 'Home',
+  headerMode: 'none',
+  initialRouteName: 'UserSelect',
 });
 
 const AppContainer = createAppContainer(AppNavigator);
