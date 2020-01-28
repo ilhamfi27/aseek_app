@@ -14,7 +14,7 @@ export default class Home extends Component {
       <View style={mainStyle.container}>
         <UserHeader />
         <ScrollView>
-          <View style={styles.homeMenusBody}>
+          <View style={mainStyle.defaultBody}>
             <MenuBoxButton 
               title="Berangkat" 
               onPress={() => this.props.navigation.navigate('Berangkat')}

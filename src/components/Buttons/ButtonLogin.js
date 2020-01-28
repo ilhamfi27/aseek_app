@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import colors from '../../res/colors'
 
-export default class DefaultButton extends Component {
+export default class ButtonLogin extends Component {
   constructor(props){
     super(props);
     const { title, onPress, type } = props;
