@@ -15,6 +15,8 @@ import Pulang from './src/screens/Pulang/Pulang';
 import Ekstrakulikuler from './src/screens/Ekstrakulikuler/Ekstrakulikuler';
 import MapelBankSoal from './src/screens/MapelBankSoal/MapelBankSoal';
 import Rapor from './src/screens/Rapor/Rapor';
+import Nilai from './src/screens/Nilai/Nilai';
+import DetailNilai from './src/screens/DetailNilai/DetailNilai';
 
 export default class App extends Component {
   render() {
@@ -54,15 +56,18 @@ const AppNavigator = createStackNavigator({
     screen: Rapor
   },
   Login: {
-    screen: Login,
-    // navigationOptions: {
-    //   header: null, //No header in this screen
-    // },
+    screen: Login
+  },
+  Nilai: {
+    screen: Nilai
+  },
+  DetailNilai: {
+    screen: DetailNilai
   },
 },
 {
   headerMode: 'none',
-  initialRouteName: 'Login',
+  initialRouteName: 'DetailNilai',
 });
 
 const AppContainer = createAppContainer(AppNavigator);
