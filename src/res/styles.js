@@ -1,20 +1,13 @@
 import {
   StyleSheet,
 } from 'react-native';
+import colors from './colors'
 
 export default StyleSheet.create({
-  screen: {
-    padding: 50
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    backgroundColor: colors.white,
   },
-  inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'ceznter'
-  },
-  input: {
-    width: '80%',
-    borderColor: '#000000',
-    borderWidth: 1,
-    padding: 10
-  }
 });
