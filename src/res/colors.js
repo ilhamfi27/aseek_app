@@ -3,4 +3,5 @@ export default {
   white: '#FFFFFF',
   darkGrey: '#4a4a4a',
   ligthred: '#FF0000',
+  homeRed: '#E62129',
 };
