@@ -17,6 +17,7 @@ import MapelBankSoal from './src/screens/MapelBankSoal/MapelBankSoal';
 import Rapor from './src/screens/Rapor/Rapor';
 import Nilai from './src/screens/Nilai/Nilai';
 import DetailNilai from './src/screens/DetailNilai/DetailNilai';
+import Soal from './src/screens/Soal/Soal';
 
 export default class App extends Component {
   render() {
@@ -64,10 +65,13 @@ const AppNavigator = createStackNavigator({
   DetailNilai: {
     screen: DetailNilai
   },
+  Soal: {
+    screen: Soal
+  },
 },
 {
   headerMode: 'none',
-  initialRouteName: 'DetailNilai',
+  initialRouteName: 'Soal',
 });
 
 const AppContainer = createAppContainer(AppNavigator);

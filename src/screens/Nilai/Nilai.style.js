@@ -5,10 +5,9 @@ import colors from '../../res/colors'
 
 export default StyleSheet.create({
   body: {
-    flex: 1, 
-    flexDirection: 'column', 
     width: '100%', 
-    alignItems: 'center'
+    alignContent: 'flex-start',
+    justifyContent: 'center',
   },
   picker:{
     height: 50, 

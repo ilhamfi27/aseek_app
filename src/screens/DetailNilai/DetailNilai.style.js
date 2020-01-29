@@ -5,18 +5,19 @@ import colors from '../../res/colors'
 
 export default StyleSheet.create({
   body: {
-    flex: 1, 
-    flexDirection: 'column', 
+    flex: 1,
+    flexDirection: 'column',
     width: '100%', 
-    alignContent: 'center'
-  },
-  picker:{
-    height: 50, 
-    width: '60%'
-  },
-  buttonBox: {
-    backgroundColor: colors.white,
-    marginTop: 10,
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'flex-start',
     width: '100%',
+  },
+  listNilai: {
+    width: '100%',
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 10,
   }
 });
