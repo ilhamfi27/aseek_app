@@ -35,7 +35,9 @@ export default class Rapor extends Component {
   render () {
     const buttons = this.state.nilai.map((value, index) => {
       const { judul } = value
-      return <DetailButton key={index} title={judul} rightText=">" onPress={() => {alert (judul)}}/>;
+      return <DetailButton key={index} title={judul} rightText=">" onPress={() => {
+        this.props.navigation.navigate('DetailNilai')
+      }}/>;
     });
     return (
       <View style={mainStyle.container}>

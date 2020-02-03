@@ -18,6 +18,7 @@ import Rapor from './src/screens/Rapor/Rapor';
 import Nilai from './src/screens/Nilai/Nilai';
 import DetailNilai from './src/screens/DetailNilai/DetailNilai';
 import Soal from './src/screens/Soal/Soal';
+import Scanner from './src/screens/Scanner/Scanner';
 
 export default class App extends Component {
   render() {
@@ -68,10 +69,13 @@ const AppNavigator = createStackNavigator({
   Soal: {
     screen: Soal
   },
+  Scanner: {
+    screen: Scanner
+  },
 },
 {
   headerMode: 'none',
-  initialRouteName: 'Soal',
+  initialRouteName: 'UserSelect',
 });
 
 const AppContainer = createAppContainer(AppNavigator);

@@ -42,7 +42,9 @@ export default class MapelBankSoal extends Component {
   }
   render () {
     const buttons = this.state.ekstrakulikuler.map((value, index) => {
-      return <DefaultInformationButton key={index} data={value} onPress={() => { null }}/>;
+      return <DefaultInformationButton key={index} data={value} onPress={() => { 
+        this.props.navigation.navigate('Soal')
+       }}/>;
     });
     return (
       <View style={mainStyle.container}>
