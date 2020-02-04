@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import colors from '../../res/colors'
 
-export default class ActionButton extends Component {
+export default class MenuBoxButton extends Component {
   constructor(props) {
     super(props);
     const { title, onPress, iconImage } = props;

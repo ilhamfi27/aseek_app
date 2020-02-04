@@ -7,42 +7,44 @@ import mainStyle from '../../res/styles'
 import UserHeader from '../../components/Header/UserHeader'
 import Footer from '../../components/Footer/Footer'
 import DefaultInformationButton from '../../components/Buttons/DefaultInformationButton'
-export default class Ekstrakulikuler extends Component {
+export default class MapelBankSoal extends Component {
   constructor(props){
     super(props)
     this.state = {
       ekstrakulikuler: [
         {
-          title: 'Pramuka',
-          leftInfo: 'Jumat',
-          rightInfo: '10.30 - 14.30 WIB',
+          title: 'Soal 1',
+          leftInfo: 'Soal Terjawab',
+          rightInfo: '20 Poin',
         },
         {
-          title: 'Paskibra',
-          leftInfo: 'Kamis & Sabtu',
-          rightInfo: '10.30 - 14.30 WIB',
+          title: 'Soal 2',
+          leftInfo: 'Soal Belum Terjawab',
+          rightInfo: '0 Poin',
         },
         {
-          title: 'PMR',
-          leftInfo: 'Kamis & Sabtu',
-          rightInfo: '10.30 - 14.30 WIB',
+          title: 'Soal 3',
+          leftInfo: 'Soal Terjawab',
+          rightInfo: '20 Poin',
         },
         {
-          title: 'Patroli Keamanan Sekolah',
-          leftInfo: 'Kamis & Sabtu',
-          rightInfo: '10.30 - 14.30 WIB',
+          title: 'Soal 4',
+          leftInfo: 'Soal Terjawab',
+          rightInfo: '20 Poin',
         },
         {
-          title: 'Stampara',
-          leftInfo: 'Kamis & Sabtu',
-          rightInfo: '10.30 - 14.30 WIB',
+          title: 'Soal 5',
+          leftInfo: 'Soal Terjawab',
+          rightInfo: '20 Poin',
         },
       ]
     }
   }
   render () {
     const buttons = this.state.ekstrakulikuler.map((value, index) => {
-      return <DefaultInformationButton key={index} data={value} onPress={() => { null }}/>;
+      return <DefaultInformationButton key={index} data={value} onPress={() => { 
+        this.props.navigation.navigate('Soal')
+       }}/>;
     });
     return (
       <View style={mainStyle.container}>

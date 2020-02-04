@@ -26,12 +26,4 @@ export default StyleSheet.create({
   usersName: {
     fontWeight: 'bold',
   },
-  homeMenusBody: {
-    backgroundColor: colors.white,
-    padding: 20,
-    flex: 3,
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    flexWrap: 'wrap',
-  },
 });

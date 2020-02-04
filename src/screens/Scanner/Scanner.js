@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import { RNCamera } from 'react-native-camera';
 import {
   View,
-  ScrollView,
-  Text,
 } from 'react-native';
 import mainStyle from '../../res/styles'
-import UserHeader from '../../components/Header/UserHeader'
-import Footer from '../../components/Footer/Footer'
-import { TextInput } from 'react-native-gesture-handler';
-export default class Berangkat extends Component {
-  render () {
+import styles from './Scanner.style'
+export default class Scanner extends Component {
+  barcodeRecognized = (barcode) => {
+    console.warn(barcode);
+  };
+  render() {
     return (
-      <View style={mainStyle.container}>
-        <UserHeader />
-        <ScrollView>
+      <View style={[mainStyle.container, styles.container]}>
+        <View style={styles.cameraBox}>
           <RNCamera
             ref={ref => {
               this.camera = ref;
@@ -24,10 +22,11 @@ export default class Berangkat extends Component {
               width: '100%',
             }}
             onBarCodeRead={this.barcodeRecognized}
+            zoom={0.4}
+            ratio="1:1"
           >
           </RNCamera>
-        </ScrollView>
-        <Footer /> 
+        </View>
       </View>
     );
   }

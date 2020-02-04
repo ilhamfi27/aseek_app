@@ -13,7 +13,12 @@ import BankSoal from './src/screens/BankSoal/BankSoal';
 import Berangkat from './src/screens/Berangkat/Berangkat';
 import Pulang from './src/screens/Pulang/Pulang';
 import Ekstrakulikuler from './src/screens/Ekstrakulikuler/Ekstrakulikuler';
+import MapelBankSoal from './src/screens/MapelBankSoal/MapelBankSoal';
 import Rapor from './src/screens/Rapor/Rapor';
+import Nilai from './src/screens/Nilai/Nilai';
+import DetailNilai from './src/screens/DetailNilai/DetailNilai';
+import Soal from './src/screens/Soal/Soal';
+import Scanner from './src/screens/Scanner/Scanner';
 
 export default class App extends Component {
   render() {
@@ -46,14 +51,26 @@ const AppNavigator = createStackNavigator({
   Ekstrakulikuler: {
     screen: Ekstrakulikuler
   },
+  MapelBankSoal: {
+    screen: MapelBankSoal
+  },
   Rapor: {
     screen: Rapor
   },
   Login: {
-    screen: Login,
-    // navigationOptions: {
-    //   header: null, //No header in this screen
-    // },
+    screen: Login
+  },
+  Nilai: {
+    screen: Nilai
+  },
+  DetailNilai: {
+    screen: DetailNilai
+  },
+  Soal: {
+    screen: Soal
+  },
+  Scanner: {
+    screen: Scanner
   },
 },
 {

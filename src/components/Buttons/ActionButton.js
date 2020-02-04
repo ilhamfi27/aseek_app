@@ -19,8 +19,6 @@ export default class ActionButton extends Component {
     }
   }
   render() {
-    console.log(this.state.icon);
-    
     const icon = this.state.icon 
       ? (
         <Image
