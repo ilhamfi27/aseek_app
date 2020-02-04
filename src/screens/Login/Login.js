@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import styles from './Login.style'
 import DefaultButton from './../../components/Buttons/ButtonLogin'
+import InvisButton from './../../components/Buttons/invisButton'
 import { ScrollView } from 'react-native-gesture-handler';
+
 
 export default class Login extends Component {
   render() {
@@ -29,6 +31,18 @@ export default class Login extends Component {
           <View style={styles.buttonBox}>
             <DefaultButton
               title="Login"
+              onPress={() => this.props.navigation.navigate('Home')}
+              type='default' />
+          </View>
+          <View style={styles.invisButton}>
+            <InvisButton
+              title="Register"
+              onPress={() => this.props.navigation.navigate('Home')}
+              type='default' />
+          </View>
+          <View style={styles.invisButton}>
+            <InvisButton
+              title="Lupa Password"
               onPress={() => this.props.navigation.navigate('Home')}
               type='default' />
           </View>

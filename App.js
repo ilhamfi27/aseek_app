@@ -58,7 +58,7 @@ const AppNavigator = createStackNavigator({
 },
 {
   headerMode: 'none',
-  initialRouteName: 'UserSelect',
+  initialRouteName: 'Berangkat',
 });
 
 const AppContainer = createAppContainer(AppNavigator);
