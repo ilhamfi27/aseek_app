@@ -18,27 +18,27 @@ export default class Home extends Component {
             <MenuBoxButton 
               title="Berangkat" 
               onPress={() => this.props.navigation.navigate('Scanner')}
-              iconImage={require('./../../assets/images/white_pencil.png')} 
+              iconImage={require('./../../assets/images/berangkat.png')} 
             />
             <MenuBoxButton 
               title="Pulang" 
               onPress={() => this.props.navigation.navigate('Scanner')}
-              iconImage={require('./../../assets/images/white_pencil.png')} 
+              iconImage={require('./../../assets/images/pulang.png')} 
             />
             <MenuBoxButton 
               title="Bank Soal" 
               onPress={() => this.props.navigation.navigate('BankSoal')}
-              iconImage={require('./../../assets/images/white_pencil.png')} 
+              iconImage={require('./../../assets/images/bank_soal.png')} 
             />
             <MenuBoxButton 
               title="Ekstrakulikuler" 
               onPress={() => this.props.navigation.navigate('Ekstrakulikuler')}
-              iconImage={require('./../../assets/images/white_pencil.png')} 
+              iconImage={require('./../../assets/images/ekstrakulikuler.png')} 
             />
             <MenuBoxButton 
               title="Rapor" 
               onPress={() => this.props.navigation.navigate('Rapor')}
-              iconImage={require('./../../assets/images/white_pencil.png')} 
+              iconImage={require('./../../assets/images/rapor.png')} 
             />
           </View>
         </ScrollView>

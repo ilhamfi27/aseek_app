@@ -10,9 +10,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
   },
-  titleText: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    color: colors.defaultRed,
+  userImage:{
+    marginTop:230,
+    marginLeft:100,
+    width:200,
+    height:200,
+    resizeMode:'center'
+    // backgroundColor: colors.defaultRed 
   }
 });

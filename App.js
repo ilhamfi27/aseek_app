@@ -75,7 +75,7 @@ const AppNavigator = createStackNavigator({
 },
 {
   headerMode: 'none',
-  initialRouteName: 'Berangkat',
+  initialRouteName: 'Splash',
 });
 
 const AppContainer = createAppContainer(AppNavigator);
