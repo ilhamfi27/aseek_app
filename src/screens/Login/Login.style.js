@@ -10,6 +10,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     paddingTop: '30%',
+    height: '100%',
   },
   input: {
     borderWidth: 1,
@@ -43,4 +44,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  invisButton:{
+    flexWrap: 'wrap',
+    alignContent: 'flex-start',
+    flexDirection: 'row',
+    flex: 3,
+    paddingTop:10,
+  }
 });

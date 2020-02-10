@@ -13,7 +13,7 @@ export default class UserHeader extends Component {
       <View style={styles.header}>
         <Image
           resizeMode='cover'
-          source={require('./../../assets/images/user_img_dummy.png')}
+          source={require('./../../assets/images/profile.png')}
           style={styles.userImage}
         />
         <View style={styles.userInformation}>
