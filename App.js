@@ -1,8 +1,10 @@
 // App.js
 import React, { Component } from 'react';
-import { createAppContainer } from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack'
 import 'react-native-gesture-handler';
+
+import colors from './src/res/colors'
 
 import Home from './src/screens/Home/Home';
 import About from './src/screens/About/About';
@@ -26,56 +28,48 @@ export default class App extends Component {
   }
 }
 
-const AppNavigator = createStackNavigator({
-  Splash: {
-    screen: Splash
-  },
-  UserSelect: {
-    screen: UserSelect
-  },
-  Home: {
-    screen: Home
-  },
-  About: {
-    screen: About
-  },
-  BankSoal: {
-    screen: BankSoal
-  },
-  Berangkat: {
-    screen: Berangkat
-  },
-  Pulang: {
-    screen: Pulang
-  },
-  Ekstrakulikuler: {
-    screen: Ekstrakulikuler
-  },
-  MapelBankSoal: {
-    screen: MapelBankSoal
-  },
-  Rapor: {
-    screen: Rapor
-  },
-  Login: {
-    screen: Login
-  },
-  Nilai: {
-    screen: Nilai
-  },
-  DetailNilai: {
-    screen: DetailNilai
-  },
-  Soal: {
-    screen: Soal
-  },
-  Scanner: {
-    screen: Scanner
-  },
-},
-{
+const AuthStack = createStackNavigator({
+  UserSelect: UserSelect,
+  Login: Login,
+},{
   headerMode: 'none',
-  initialRouteName: 'Splash',
+})
+
+const AppNavigator = createStackNavigator({
+  Home: Home,
+  About: About,
+  BankSoal: BankSoal,
+  Berangkat: Berangkat,
+  Pulang: Pulang,
+  Ekstrakulikuler: Ekstrakulikuler,
+  MapelBankSoal: MapelBankSoal,
+  Rapor: Rapor,
+  Nilai: Nilai,
+  DetailNilai: DetailNilai,
+  Soal: Soal,
+  Scanner: Scanner,
+}, {
+  navigationOptions: {
+    header: {
+      style: {
+        shadowOpacity: 0,
+        shadowOffset: {
+          height: 0,
+        },
+        shadowRadius: 0,
+        backgroundColor: colors.homeRed,
+      }
+    }
+  }
 });
 
-const AppContainer = createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(
+  createSwitchNavigator({
+    Splash: Splash,
+    App: AppNavigator,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'Splash',
+  })
+);

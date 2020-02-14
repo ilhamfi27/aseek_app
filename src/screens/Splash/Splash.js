@@ -7,13 +7,20 @@ import {
 import styles from './Splash.style'
 
 export default class Splash extends Component {
-  render () {
+  componentDidMount() {
+    // Start counting when the page is loaded
+    this.timeoutHandle = setTimeout(() => {
+      // Add your logic for the transition
+      this.props.navigation.navigate('UserSelect')
+    }, 2000);
+  }
+  render() {
     return (
       <Image
-          resizeMode='cover'
-          source={require('./../../assets/images/Logo_AseeK.png')}
-          style={styles.userImage}
-        />
+        resizeMode='cover'
+        source={require('./../../assets/images/Logo_AseeK.png')}
+        style={styles.userImage}
+      />
     );
   }
 };

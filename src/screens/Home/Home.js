@@ -9,6 +9,13 @@ import UserHeader from './../../components/Header/UserHeader'
 import Footer from './../../components/Footer/Footer'
 import MenuBoxButton from './../../components/Buttons/MenuBoxButton'
 export default class Home extends Component {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const { params } = navigation.state;
+    
+    return {
+      title: params ? params.otherParam : '',
+    };
+  };
   render () {
     return (
       <View style={mainStyle.container}>
