@@ -24,12 +24,12 @@ export default class Home extends Component {
           <View style={mainStyle.defaultBody}>
             <MenuBoxButton 
               title="Berangkat" 
-              onPress={() => this.props.navigation.navigate('Scanner')}
+              onPress={() => this.props.navigation.navigate('Perjalanan')}
               iconImage={require('./../../assets/images/berangkat.png')} 
             />
             <MenuBoxButton 
               title="Pulang" 
-              onPress={() => this.props.navigation.navigate('Scanner')}
+              onPress={() => this.props.navigation.navigate('Perjalanan')}
               iconImage={require('./../../assets/images/pulang.png')} 
             />
             <MenuBoxButton 

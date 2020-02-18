@@ -12,7 +12,7 @@ import Splash from './src/screens/Splash/Splash';
 import Login from './src/screens/Login/Login';
 import UserSelect from './src/screens/UserSelect/UserSelect';
 import BankSoal from './src/screens/BankSoal/BankSoal';
-import Berangkat from './src/screens/Berangkat/Berangkat';
+import Perjalanan from './src/screens/Perjalanan/Perjalanan';
 import Pulang from './src/screens/Pulang/Pulang';
 import Ekstrakulikuler from './src/screens/Ekstrakulikuler/Ekstrakulikuler';
 import MapelBankSoal from './src/screens/MapelBankSoal/MapelBankSoal';
@@ -30,7 +30,6 @@ export default class App extends Component {
 
 const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
-  Login: Login,
 },{
   headerMode: 'none',
 })
@@ -39,7 +38,7 @@ const AppNavigator = createStackNavigator({
   Home: Home,
   About: About,
   BankSoal: BankSoal,
-  Berangkat: Berangkat,
+  Perjalanan: Perjalanan,
   Pulang: Pulang,
   Ekstrakulikuler: Ekstrakulikuler,
   MapelBankSoal: MapelBankSoal,
@@ -65,11 +64,12 @@ const AppNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
+    Login: Login,
     Splash: Splash,
     App: AppNavigator,
     Auth: AuthStack,
   },
   {
-    initialRouteName: 'Splash',
+    initialRouteName: 'Login',
   })
 );

@@ -5,18 +5,19 @@ import {
   Text,
 } from 'react-native';
 import mainStyle from '../../res/styles'
-import UserHeader from '../../components/Header/UserHeader'
 import Footer from '../../components/Footer/Footer'
 export default class Pulang extends Component {
   render () {
     return (
       <View style={mainStyle.container}>
-        <UserHeader />
-        <ScrollView>
-          <View>
-            <Text>Pulang</Text>
-          </View>
-        </ScrollView>
+        <View style={{
+          width: '100%',
+          height: '90%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <QRScanner />
+        </View>
         <Footer /> 
       </View>
     );
