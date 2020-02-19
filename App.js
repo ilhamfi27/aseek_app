@@ -21,6 +21,7 @@ import Nilai from './src/screens/Nilai/Nilai';
 import DetailNilai from './src/screens/DetailNilai/DetailNilai';
 import Soal from './src/screens/Soal/Soal';
 import Scanner from './src/screens/Scanner/Scanner';
+import Tracker from './src/screens/Tracker/Tracker';
 
 export default class App extends Component {
   render() {
@@ -47,29 +48,25 @@ const AppNavigator = createStackNavigator({
   DetailNilai: DetailNilai,
   Soal: Soal,
   Scanner: Scanner,
+  Tracker: Tracker,
 }, {
-  navigationOptions: {
-    header: {
-      style: {
-        shadowOpacity: 0,
-        shadowOffset: {
-          height: 0,
-        },
-        shadowRadius: 0,
-        backgroundColor: colors.homeRed,
-      }
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: colors.homeRed,
+      elevation: 0,
     }
   }
 });
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
-    Login: Login,
+    Login: Login, // harusnya di AuthStack
+    Tracker: Tracker, // harusnya di AppNavigator
     Splash: Splash,
     App: AppNavigator,
     Auth: AuthStack,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Tracker',
   })
 );

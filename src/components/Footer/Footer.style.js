@@ -8,5 +8,7 @@ export default StyleSheet.create({
     height: '10%',
     width: '100%',
     backgroundColor: colors.homeRed,
+    position: 'absolute',
+    bottom: 0,
   }
 });
