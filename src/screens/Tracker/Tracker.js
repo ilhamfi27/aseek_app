@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { RNCamera } from 'react-native-camera';
 import {
   Button,
   PermissionsAndroid,
@@ -12,17 +11,28 @@ import {
 import mainStyle from './../../res/styles'
 import Footer from './../../components/Footer/Footer'
 import style from './Tracker.style'
-import { TextInput } from 'react-native-gesture-handler';
 import Geolocation from 'react-native-geolocation-service';
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 export default class Tracker extends Component {
   watchId = null;
-
+  LATITUDE_DELTA = 0.009;
+  LONGITUDE_DELTA = 0.009;
+  LATITUDE = 18.7934829;
+  LONGITUDE = 98.9867401;
   state = {
     loading: false,
-    updatesEnabled: false,
-    location: {}
+    location: {
+      latitude: null,
+      longitude: null,
+      heading: null,
+      timestamp: null,
+    }
   };
+
+  componentDidMount(){
+    this.getLocationUpdates()
+  }
 
   hasLocationPermission = async () => {
     if (Platform.OS === 'ios' ||
@@ -76,11 +86,17 @@ export default class Tracker extends Component {
 
     if (!hasLocationPermission) return;
 
-    this.setState({ updatesEnabled: true }, () => {
+    this.setState(() => {
       this.watchId = Geolocation.watchPosition(
         (position) => {
-          this.setState({ location: position });
-          console.log(position);
+          this.setState({ 
+            location: {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              heading: position.coords.heading,
+              timestamp: position.timestamp,
+            }
+          });
         },
         (error) => {
           this.setState({ location: error });
@@ -98,19 +114,35 @@ export default class Tracker extends Component {
     }
   }
 
+  getMapRegion = () => {
+    let latitude = this.state.location.latitude != null ? this.state.location.latitude : 0;
+    let longitude = this.state.location.longitude != null ? this.state.location.longitude : 0;
+
+    return {
+      latitude: latitude,
+      longitude: longitude,
+      latitudeDelta: this.LATITUDE_DELTA,
+      longitudeDelta: this.LONGITUDE_DELTA
+    }
+  }
+
   render() {
-    const { loading, location, updatesEnabled } = this.state;
+    console.log(this.getMapRegion());
+    
     return (
       <View style={mainStyle.container}>
-        <Button title='Get Location' onPress={this.getLocation} disabled={loading || updatesEnabled} />
-        <View style={styles.buttons}>
-          <Button title='Start Observing' onPress={this.getLocationUpdates} disabled={updatesEnabled} />
-          <Button title='Stop Observing' onPress={this.removeLocationUpdates} disabled={!updatesEnabled} />
-        </View>
-
-        <View style={styles.result}>
-          <Text>{JSON.stringify(location, null, 4)}</Text>
-        </View>
+        <MapView 
+          provider={PROVIDER_GOOGLE}
+          style={styles.map}
+          initialRegion={{
+            latitude: -6.914744,
+            longitude: 107.609810,
+            latitudeDelta: this.LATITUDE_DELTA,
+            longitudeDelta: this.LONGITUDE_DELTA
+          }}
+          region={this.getMapRegion()}>
+            <Marker coordinate={this.getMapRegion()} />
+          </MapView>
         <Footer />
       </View>
     );
@@ -137,5 +169,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginVertical: 12,
       width: '100%'
-  }
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
 });
