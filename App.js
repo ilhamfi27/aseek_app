@@ -31,6 +31,7 @@ export default class App extends Component {
 
 const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
+  Login: Login,
 },{
   headerMode: 'none',
 })
@@ -60,13 +61,12 @@ const AppNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
-    Login: Login, // harusnya di AuthStack
-    Tracker: Tracker, // harusnya di AppNavigator
+    Login: Login,
     Splash: Splash,
     App: AppNavigator,
     Auth: AuthStack,
   },
   {
-    initialRouteName: 'Tracker',
+    initialRouteName: 'Login',
   })
 );
