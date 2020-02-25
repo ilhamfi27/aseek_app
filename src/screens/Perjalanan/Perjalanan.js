@@ -15,7 +15,7 @@ export default class Perjalanan extends Component {
     return (
       <View style={mainStyle.container}>
         <View style={style.scannerBox}>
-          <QRScanner />
+          <QRScanner {...this.props}/>
         </View>
         <Footer /> 
       </View>

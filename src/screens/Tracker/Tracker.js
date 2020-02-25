@@ -13,7 +13,7 @@ import Footer from './../../components/Footer/Footer'
 import colors from './../../res/colors'
 import style from './Tracker.style'
 import Geolocation from 'react-native-geolocation-service';
-import MapView, { Marker, PROVIDER_GOOGLE, Circle } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Circle } from "react-native-maps";
 
 export default class Tracker extends Component {
   watchId = null;
@@ -118,8 +118,9 @@ export default class Tracker extends Component {
   }
 
   getMapRegion = () => {
-    let latitude = this.state.location.latitude != null ? this.state.location.latitude : 0;
-    let longitude = this.state.location.longitude != null ? this.state.location.longitude : 0;
+    console.log(this.state.location);
+    let latitude = this.state.location.latitude != null ? this.state.location.latitude : -6.914744;
+    let longitude = this.state.location.longitude != null ? this.state.location.longitude : 107.609810;
 
     return {
       latitude: latitude,
@@ -145,7 +146,6 @@ export default class Tracker extends Component {
             longitudeDelta: this.LONGITUDE_DELTA
           }}
           region={this.getMapRegion()}>
-            {/* <Marker coordinate={this.getMapRegion()} /> */}
             <Circle
               center={this.getMapRegion()}
               radius={this.state.location.accuracy}

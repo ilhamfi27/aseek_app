@@ -61,12 +61,11 @@ const AppNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
-    Login: Login,
     Splash: Splash,
     App: AppNavigator,
     Auth: AuthStack,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Splash',
   })
 );

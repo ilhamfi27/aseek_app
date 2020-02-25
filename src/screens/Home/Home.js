@@ -29,7 +29,7 @@ export default class Home extends Component {
             />
             <MenuBoxButton 
               title="Pulang" 
-              onPress={() => this.props.navigation.navigate('Tracker')}
+              onPress={() => this.props.navigation.navigate('Perjalanan')}
               iconImage={require('./../../assets/images/pulang.png')} 
             />
             <MenuBoxButton 

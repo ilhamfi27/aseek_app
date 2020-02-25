@@ -7,7 +7,7 @@ import styles from './QRScanner.style'
 
 export default class QRScanner extends Component {
   barcodeRecognized = (barcode) => {
-    console.warn(barcode);
+    this.props.navigation.navigate('Tracker')
   };
   render() {
     return (
