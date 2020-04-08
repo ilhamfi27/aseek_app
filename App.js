@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack'
 import 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+import store from './redux/store'
 
 import colors from './src/res/colors'
 
@@ -24,8 +26,16 @@ import Scanner from './src/screens/Scanner/Scanner';
 import Tracker from './src/screens/Tracker/Tracker';
 
 export default class App extends Component {
+  constructor(props){
+    super(props)
+  }
+
   render() {
-    return <AppContainer />;
+    return (
+      <Provider store={ store }>
+        <AppContainer />
+      </Provider>
+    );
   }
 }
 

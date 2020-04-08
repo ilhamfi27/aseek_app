@@ -19,13 +19,13 @@ export default class Tracker extends Component {
   watchId = null;
   LATITUDE_DELTA = 0.009;
   LONGITUDE_DELTA = 0.009;
-  LATITUDE = 18.7934829;
-  LONGITUDE = 98.9867401;
+  LATITUDE = -6.914744;
+  LONGITUDE = 107.609810;
   state = {
     loading: false,
     location: {
-      latitude: 0,
-      longitude: 0,
+      latitude: this.LATITUDE,
+      longitude: this.LONGITUDE,
       heading: 0,
       timestamp: 0,
       accuracy: 0,
@@ -72,7 +72,6 @@ export default class Tracker extends Component {
       Geolocation.getCurrentPosition(
         (position) => {
           this.setState({ location: position, loading: false });
-          console.log(position);
         },
         (error) => {
           this.setState({ location: error, loading: false });
@@ -118,7 +117,6 @@ export default class Tracker extends Component {
   }
 
   getMapRegion = () => {
-    console.log(this.state.location);
     let latitude = this.state.location.latitude != null ? this.state.location.latitude : -6.914744;
     let longitude = this.state.location.longitude != null ? this.state.location.longitude : 107.609810;
 
@@ -131,6 +129,7 @@ export default class Tracker extends Component {
   }
 
   render() {
+    console.log("region");
     console.log(this.getMapRegion());
     
     return (
