@@ -6,8 +6,9 @@ import {
 } from 'react-native'
 import ActionButton from './../Buttons/ActionButton'
 import styles from './UserHeader.style'
+import { connect } from 'react-redux';
 
-export default class UserHeader extends Component {
+class UserHeader extends Component {
   render() {
     return (
       <View style={styles.header}>
@@ -17,7 +18,7 @@ export default class UserHeader extends Component {
           style={styles.userImage}
         />
         <View style={styles.userInformation}>
-          <Text style={[styles.userInformationText, styles.usersName]}>Raden Ilham Fadhilah</Text>
+          <Text style={[styles.userInformationText, styles.usersName]}>{ this.props.user.username }</Text>
           <Text style={styles.userInformationText}>131010687</Text>
           <Text style={styles.userInformationText}>XII Rekayasa Perangkat Lunak A</Text>
           <ActionButton
@@ -30,3 +31,17 @@ export default class UserHeader extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  onLogin: (user) => {
+    dispatch(userLogin(user));
+  }
+});
+
+export default connect(mapStateToProps, null)(UserHeader)
