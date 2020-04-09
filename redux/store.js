@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 
 const reducers =  combineReducers({
   friends: friendReducer,
-  users: userReducer,
+  user: userReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));

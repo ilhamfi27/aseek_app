@@ -8,7 +8,6 @@ import styles from './Login.style'
 import DefaultButton from './../../components/Buttons/ButtonLogin'
 import InvisButton from './../../components/Buttons/invisButton'
 import { ScrollView } from 'react-native-gesture-handler';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
   userLogin
@@ -45,7 +44,18 @@ class Login extends Component {
     })
   }
 
+  userLoginCheck(){
+    if (this.props.user.user_id != "") {
+      return true
+    }
+    return false
+  }
+
   render() {
+    if (this.userLoginCheck()) {
+      this.props.navigation.navigate('Home');
+    }
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -97,10 +107,16 @@ class Login extends Component {
   }
 };
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
 const mapDispatchToProps = dispatch => ({
   onLogin: (user) => {
     dispatch(userLogin(user));
-  },
+  }
 });
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

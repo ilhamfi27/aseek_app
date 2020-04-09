@@ -1,24 +1,10 @@
 import axios from 'axios'
 import {
-  ADD_FRIEND,
-  GET_FRIEND,
   USER_LOGIN,
+  LOGGED_USER,
 } from './../types'
 
 const apiUrl = 'http://192.168.1.8:8000/api/v1';
-
-export const addFriend = friendIndex => (
-  {
-    type: ADD_FRIEND,
-    payload: friendIndex,
-  }
-)
-
-export const getFriend = () => (
-  {
-    type: GET_FRIEND,
-  }
-)
 
 export const userLogin = (data) => {
   console.log(data);
@@ -42,3 +28,9 @@ export const userLoginSuccess = (payload) => {
     }
   }
 };
+
+export const loggedUser = () => {
+  return {
+    type: LOGGED_USER,
+  }
+}
