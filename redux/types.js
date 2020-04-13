@@ -3,3 +3,4 @@ export const GET_FRIEND = 'GET_FRIEND'
 
 export const USER_LOGIN = 'USER_LOGIN'
 export const LOGGED_USER = 'LOGGED_USER'
+export const USER_LOGOUT = 'USER_LOGOUT'

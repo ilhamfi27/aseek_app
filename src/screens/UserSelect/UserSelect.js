@@ -7,8 +7,21 @@ import {
 } from 'react-native';
 import styles from './UserSelect.style'
 import DefaultButton from './../../components/Buttons/DefaultButton'
+import { connect } from 'react-redux';
 
-export default class UserSelect extends Component {
+class UserSelect extends Component {
+  userLoginCheck(){
+    return this.props.user.is_logged_in
+  }
+
+  componentDidMount(){
+    console.log(this.props);
+    
+    if (this.userLoginCheck()) {
+      this.props.navigation.navigate('Home');
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,3 +51,11 @@ export default class UserSelect extends Component {
     );
   }
 };
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
+export default connect(mapStateToProps, null)(UserSelect)

@@ -45,17 +45,23 @@ class Login extends Component {
   }
 
   userLoginCheck(){
-    if (this.props.user.user_id != "") {
-      return true
-    }
-    return false
+    return this.props.user.is_logged_in
   }
 
-  render() {
+  componentDidMount(){
     if (this.userLoginCheck()) {
       this.props.navigation.navigate('Home');
     }
+  }
 
+  componentDidUpdate(prevProps){
+    if (this.userLoginCheck()) {
+      this.props.navigation.navigate('Home');
+    }
+  }
+
+  render() {
+    
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -108,6 +114,7 @@ class Login extends Component {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     user: state.user,
   }

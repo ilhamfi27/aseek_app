@@ -18,7 +18,7 @@ class UserHeader extends Component {
           style={styles.userImage}
         />
         <View style={styles.userInformation}>
-          <Text style={[styles.userInformationText, styles.usersName]}>{ this.props.user.username }</Text>
+          <Text style={[styles.userInformationText, styles.usersName]}>{ this.props.user.data.username }</Text>
           <Text style={styles.userInformationText}>131010687</Text>
           <Text style={styles.userInformationText}>XII Rekayasa Perangkat Lunak A</Text>
           <ActionButton
@@ -37,11 +37,5 @@ const mapStateToProps = (state) => {
     user: state.user,
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  onLogin: (user) => {
-    dispatch(userLogin(user));
-  }
-});
 
 export default connect(mapStateToProps, null)(UserHeader)

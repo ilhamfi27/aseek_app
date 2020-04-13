@@ -8,7 +8,12 @@ import mainStyle from './../../res/styles'
 import UserHeader from './../../components/Header/UserHeader'
 import Footer from './../../components/Footer/Footer'
 import MenuBoxButton from './../../components/Buttons/MenuBoxButton'
-export default class Home extends Component {
+import { connect } from 'react-redux'
+import {
+  userLogout
+} from './../../../redux/actions/UserActions'
+
+class Home extends Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
     
@@ -16,6 +21,12 @@ export default class Home extends Component {
       title: params ? params.otherParam : '',
     };
   };
+
+  buttonLogoutPressed(){
+    this.props.onLogout();
+    this.props.navigation.navigate("Login")
+  }
+
   render () {
     return (
       <View style={mainStyle.container}>
@@ -47,6 +58,10 @@ export default class Home extends Component {
               onPress={() => this.props.navigation.navigate('Rapor')}
               iconImage={require('./../../assets/images/rapor.png')} 
             />
+            <MenuBoxButton 
+              title="LOGOUT" 
+              onPress={() => this.buttonLogoutPressed()}
+            />
           </View>
         </ScrollView>
         <Footer /> 
@@ -54,3 +69,17 @@ export default class Home extends Component {
     );
   }
 };
+
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+  }
+};
+
+const mapDispatchToProps = dispatch => ({
+  onLogout: () => {
+    dispatch(userLogout());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

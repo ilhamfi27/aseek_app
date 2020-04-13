@@ -1,15 +1,14 @@
-import axios from 'axios'
+import axios from './../../axios'
 import {
   USER_LOGIN,
   LOGGED_USER,
+  USER_LOGOUT,
 } from './../types'
-
-const apiUrl = 'http://192.168.1.8:8000/api/v1';
 
 export const userLogin = (data) => {
   console.log(data);
   return (dispatch) => {
-    return axios.post(`${apiUrl}/login`, data)
+    return axios.post(`/login`, data)
       .then(response => {
         console.log(response);
         dispatch(userLoginSuccess(response.data))
@@ -19,6 +18,18 @@ export const userLogin = (data) => {
       });
   };
 };
+
+export const userLogout = () => {
+  return (dispatch) => {
+    dispatch(userLogoutAction())
+  }
+}
+
+export const userLogoutAction = () => {
+  return {
+    type: USER_LOGOUT
+  }
+}
 
 export const userLoginSuccess = (payload) => {
   return {
