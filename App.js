@@ -24,6 +24,7 @@ import DetailNilai from './src/screens/DetailNilai/DetailNilai';
 import Soal from './src/screens/Soal/Soal';
 import Scanner from './src/screens/Scanner/Scanner';
 import Tracker from './src/screens/Tracker/Tracker';
+import Registrasi from './src/screens/Registrasi/Registrasi';
 
 export default class App extends Component {
   constructor(props){
@@ -42,6 +43,7 @@ export default class App extends Component {
 const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
   Login: Login,
+  Registrasi: Registrasi,
 },{
   headerMode: 'none',
 })
@@ -60,6 +62,7 @@ const AppNavigator = createStackNavigator({
   Soal: Soal,
   Scanner: Scanner,
   Tracker: Tracker,
+  
 }, {
   defaultNavigationOptions: {
     headerStyle: {

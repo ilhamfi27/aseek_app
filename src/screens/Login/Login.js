@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import {
   userLogin
 } from './../../../redux/actions/UserActions'
+import Registrasi from '../Registrasi/Registrasi';
 
 
 class Login extends Component {

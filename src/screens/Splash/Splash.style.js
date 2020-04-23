@@ -18,4 +18,4 @@ export default StyleSheet.create({
     resizeMode:'center'
     // backgroundColor: colors.defaultRed 
   }
-});
+}); 
