@@ -35,7 +35,7 @@ class Home extends Component {
           <View style={mainStyle.defaultBody}>
             <MenuBoxButton 
               title="Berangkat" 
-              onPress={() => this.props.navigation.navigate('Perjalanan')}
+              onPress={() => this.props.navigation.navigate('Tracker')}
               iconImage={require('./../../assets/images/berangkat.png')} 
             />
             <MenuBoxButton 
