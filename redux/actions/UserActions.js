@@ -3,6 +3,9 @@ import {
   USER_LOGIN,
   LOGGED_USER,
   USER_LOGOUT,
+  SET_USER_TYPE,
+  GET_USER_TYPE,
+  PREPARE_USER_REGISTRATION,
 } from './../types'
 
 export const userLogin = (data) => {
@@ -18,6 +21,18 @@ export const userLogin = (data) => {
       });
   };
 };
+
+export const userRegister = (data) => {
+  return (dispatch) => {
+    return axios.post(`/register`, data)
+      .then(response => {
+        
+      })
+      .catch(error => {
+
+      })
+  }
+}
 
 export const userLogout = () => {
   return (dispatch) => {
@@ -40,8 +55,18 @@ export const userLoginSuccess = (payload) => {
   }
 };
 
-export const loggedUser = () => {
+export const setUserType = (type) => {
   return {
-    type: LOGGED_USER,
+    type: SET_USER_TYPE,
+    payload: {
+      type: type
+    }
+  }
+}
+
+export const setUserRegistration = (payload) => {
+  return {
+    type: PREPARE_USER_REGISTRATION,
+    payload: payload
   }
 }

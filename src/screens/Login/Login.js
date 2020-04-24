@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import {
   userLogin
 } from './../../../redux/actions/UserActions'
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from '@react-native-community/async-storage';
 
 
 class Login extends Component {
@@ -22,6 +22,7 @@ class Login extends Component {
       userCredentials: "",
       password: "",
     }
+    console.log(props);
   }
 
   submitHandler() {
@@ -63,7 +64,9 @@ class Login extends Component {
   }
 
   async _asyncStore() {
-    await AsyncStorage.setItem('userToken', this.props.user.data.token );
+    try {
+      await AsyncStorage.setItem('userToken', this.props.user.data.token );
+    } catch (e) { }
   }
 
   render() {
@@ -103,8 +106,8 @@ class Login extends Component {
           </View>
           <View style={styles.invisButton}>
             <InvisButton
-              title="Register"
-              onPress={() => this.props.navigation.navigate('Home')}
+              title="Registrasi"
+              onPress={() => this.props.navigation.navigate('Registrasi')}
               type='default' />
           </View>
           <View style={styles.invisButton}>

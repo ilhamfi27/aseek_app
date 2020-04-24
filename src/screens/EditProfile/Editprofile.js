@@ -9,10 +9,6 @@ import DefaultButton from './../../components/Buttons/ButtonLogin'
 import InvisButton from './../../components/Buttons/invisButton'
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
-import {
-  userLogin
-} from './../../../redux/actions/UserActions'
-
 
 class EditProfile extends Component {
   render() {

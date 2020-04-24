@@ -25,6 +25,7 @@ import Soal from './src/screens/Soal/Soal';
 import Scanner from './src/screens/Scanner/Scanner';
 import Tracker from './src/screens/Tracker/Tracker';
 import Registrasi from './src/screens/Registrasi/Registrasi';
+import RegistrasiContinued from './src/screens/Registrasi/RegistrasiContinued';
 import EditProfile from './src/screens/EditProfile/Editprofile';
 import LupaPassword from './src/screens/LupaPassword/LupaPassword';
 
@@ -46,6 +47,7 @@ const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
   Login: Login,
   Registrasi: Registrasi,
+  RegistrasiContinued: RegistrasiContinued,
   LupaPassword: LupaPassword,
 }, {
     headerMode: 'none',

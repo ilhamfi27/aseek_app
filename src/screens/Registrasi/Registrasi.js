@@ -4,28 +4,34 @@ import {
   Image,
   TextInput,
 } from 'react-native'
-import{
-    Dropdown,
-} from 'react-native-material-dropdown';
 import styles from './Registrasi.style'
 import DefaultButton from './../../components/Buttons/ButtonLogin'
 import InvisButton from './../../components/Buttons/invisButton'
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import {
-  userLogin
+  setUserRegistration
 } from './../../../redux/actions/UserActions'
 
-
 class Registrasi extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+      password_confirm: "",
+    }
+    console.log(props);
+  }
+
+  _continue() {
+    this.props.onContinue(this.state)
+    this.props.navigation.navigate('RegistrasiContinued')
+  }
+  
   render() {
-    let data = [{
-        value: 'Guru',
-      }, {
-        value: 'Orang Tua/Wali',
-      }, {
-        value: 'Siswa/Siswi',
-      }];
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -37,9 +43,17 @@ class Registrasi extends Component {
           <View style={styles.input}>
             <TextInput
               style={styles.userInput}
+              placeholder="Nama"
+              TextColor="grey"
+              onChangeText={(text) => this.setState({ name: text })}
+            />
+          </View>
+          <View style={styles.input}>
+            <TextInput
+              style={styles.userInput}
               placeholder="Username"
               TextColor="grey"
-              
+              onChangeText={(text) => this.setState({ username: text })}
             />
           </View>
           <View style={styles.input}>
@@ -47,7 +61,7 @@ class Registrasi extends Component {
               style={styles.userInput}
               placeholder="Email"
               TextColor="grey"
-              
+              onChangeText={(text) => this.setState({ email: text })}
             />
           </View>
           <View style={styles.input}>
@@ -56,7 +70,7 @@ class Registrasi extends Component {
               secureTextEntry={true}
               placeholder="Password"
               TextColor="grey"
-             
+              onChangeText={(text) => this.setState({ password: text })}
             />
           </View>
           <View style={styles.input}>
@@ -65,19 +79,19 @@ class Registrasi extends Component {
               secureTextEntry={true}
               placeholder="Konformasi Password"
               TextColor="grey"
-              
-            />
-          </View>
-          <View style={styles.Dropdown}>
-            <Dropdown
-                style={styles.DropdownText}
-                label='Peran'
-                data={data}
+              onChangeText={(text) => this.setState({ password_confirm: text })}
             />
           </View>
           <View style={styles.buttonBox}>
             <DefaultButton
-              title="Daftar"
+              onPress={() => this._continue()}
+              title="Selanjutnya"
+              type='default' />
+          </View>
+          <View style={styles.invisButton}>
+            <InvisButton
+              onPress={() => this.props.navigation.goBack()}
+              title="Login"
               type='default' />
           </View>
         </View>
@@ -86,4 +100,10 @@ class Registrasi extends Component {
   }
 };
 
-export default connect(null, null)(Registrasi)
+const mapDispatchToProps = dispatch => ({
+  onContinue: (user) => {
+    dispatch(setUserRegistration(user))
+  }
+})
+
+export default connect(null, mapDispatchToProps)(Registrasi)

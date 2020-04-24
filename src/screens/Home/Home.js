@@ -30,7 +30,7 @@ class Home extends Component {
   render () {
     return (
       <View style={mainStyle.container}>
-        <UserHeader />
+        <UserHeader {...this.props}/>
         <ScrollView>
           <View style={mainStyle.defaultBody}>
             <MenuBoxButton 
