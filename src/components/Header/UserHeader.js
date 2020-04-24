@@ -25,7 +25,7 @@ class UserHeader extends Component {
           <Text style={styles.userInformationText}>XII Rekayasa Perangkat Lunak A</Text>
           <ActionButton
             title="Edit"
-            onPress={() => alert('hai')}
+            onPress={() => this.props.navigation.navigate('EditProfile')}
             iconImage={require('./../../assets/images/white_pencil.png')}
           />
         </View>

@@ -24,15 +24,18 @@ import DetailNilai from './src/screens/DetailNilai/DetailNilai';
 import Soal from './src/screens/Soal/Soal';
 import Scanner from './src/screens/Scanner/Scanner';
 import Tracker from './src/screens/Tracker/Tracker';
+import Registrasi from './src/screens/Registrasi/Registrasi';
+import EditProfile from './src/screens/EditProfile/Editprofile';
+import LupaPassword from './src/screens/LupaPassword/LupaPassword';
 
 export default class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }
 
   render() {
     return (
-      <Provider store={ store }>
+      <Provider store={store}>
         <AppContainer />
       </Provider>
     );
@@ -42,9 +45,11 @@ export default class App extends Component {
 const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
   Login: Login,
-},{
-  headerMode: 'none',
-})
+  Registrasi: Registrasi,
+  LupaPassword: LupaPassword,
+}, {
+    headerMode: 'none',
+  })
 
 const AppNavigator = createStackNavigator({
   Home: Home,
@@ -60,14 +65,15 @@ const AppNavigator = createStackNavigator({
   Soal: Soal,
   Scanner: Scanner,
   Tracker: Tracker,
+  EditProfile: EditProfile,
 }, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: colors.homeRed,
-      elevation: 0,
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: colors.homeRed,
+        elevation: 0,
+      }
     }
-  }
-});
+  });
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
@@ -75,7 +81,7 @@ const AppContainer = createAppContainer(
     App: AppNavigator,
     Auth: AuthStack,
   },
-  {
-    initialRouteName: 'Splash',
-  })
+    {
+      initialRouteName: 'Splash',
+    })
 );
