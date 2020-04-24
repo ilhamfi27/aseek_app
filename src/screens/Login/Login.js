@@ -13,6 +13,7 @@ import {
   userLogin
 } from './../../../redux/actions/UserActions'
 import Registrasi from '../Registrasi/Registrasi';
+import LupaPassword from '../LupaPassword/LupaPassword';
 
 
 class Login extends Component {

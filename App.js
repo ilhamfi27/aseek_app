@@ -25,6 +25,8 @@ import Soal from './src/screens/Soal/Soal';
 import Scanner from './src/screens/Scanner/Scanner';
 import Tracker from './src/screens/Tracker/Tracker';
 import Registrasi from './src/screens/Registrasi/Registrasi';
+import EditProfile from './src/screens/EditProfile/Editprofile';
+import LupaPassword from './src/screens/LupaPassword/LupaPassword';
 
 export default class App extends Component {
   constructor(props){
@@ -44,6 +46,7 @@ const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
   Login: Login,
   Registrasi: Registrasi,
+  LupaPassword: LupaPassword,
 },{
   headerMode: 'none',
 })
@@ -62,6 +65,8 @@ const AppNavigator = createStackNavigator({
   Soal: Soal,
   Scanner: Scanner,
   Tracker: Tracker,
+  EditProfile: EditProfile,
+  
   
 }, {
   defaultNavigationOptions: {
