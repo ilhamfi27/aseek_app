@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import {
   userLogin
 } from './../../../redux/actions/UserActions'
+import { AsyncStorage } from 'react-native';
 
 
 class Login extends Component {
@@ -57,7 +58,12 @@ class Login extends Component {
   componentDidUpdate(prevProps){
     if (this.userLoginCheck()) {
       this.props.navigation.navigate('Home');
+      this._asyncStore();
     }
+  }
+
+  async _asyncStore() {
+    await AsyncStorage.setItem('userToken', this.props.user.data.token );
   }
 
   render() {

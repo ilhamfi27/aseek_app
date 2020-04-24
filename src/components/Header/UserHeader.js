@@ -18,7 +18,9 @@ class UserHeader extends Component {
           style={styles.userImage}
         />
         <View style={styles.userInformation}>
-          <Text style={[styles.userInformationText, styles.usersName]}>{ this.props.user.data.username }</Text>
+          <Text style={[styles.userInformationText, styles.usersName]}>
+            {this.props.user.data.name}
+          </Text>
           <Text style={styles.userInformationText}>131010687</Text>
           <Text style={styles.userInformationText}>XII Rekayasa Perangkat Lunak A</Text>
           <ActionButton
