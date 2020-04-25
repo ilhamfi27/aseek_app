@@ -47,17 +47,17 @@ class Login extends Component {
     })
   }
 
-  userLoginCheck(){
+  userLoginCheck() {
     return this.props.user.is_logged_in
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (this.userLoginCheck()) {
       this.props.navigation.navigate('Home');
     }
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     if (this.userLoginCheck()) {
       this.props.navigation.navigate('Home');
       this._asyncStore();
@@ -66,11 +66,11 @@ class Login extends Component {
 
   async _asyncStore() {
     try {
-      await AsyncStorage.setItem('userToken', this.props.user.data.token );
+      await AsyncStorage.setItem('userToken', this.props.user.data.token);
     } catch (e) { }
   }
 
-  forgetPasswordButtonPressed(){
+  forgetPasswordButtonPressed() {
     showMessage({
       message: "Simple message",
       type: "info",
@@ -78,7 +78,7 @@ class Login extends Component {
   }
 
   render() {
-    
+
     return (
       <ScrollView>
         <View style={styles.container}>

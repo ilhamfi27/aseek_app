@@ -9,6 +9,7 @@ const initialState = {
   registrationLoading: false,
   registrationFailed: false,
   registrationSuccess: false,
+  errorMessages: "",
 }
 
 export default uiReducer = (state = initialState, action) => {
@@ -26,7 +27,7 @@ export default uiReducer = (state = initialState, action) => {
     case CLEAR_REGISTRATION_LOADING:
       return {
         ...state,
-        registrationLoading: false
+        ...initialState,
       }
 
     case REGISTRATION_SUCCESS_NOTIFICATION:

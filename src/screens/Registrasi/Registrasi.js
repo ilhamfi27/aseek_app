@@ -10,7 +10,8 @@ import InvisButton from './../../components/Buttons/invisButton'
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import {
-  setUserRegistration
+  setUserRegistration,
+  backToLogin,
 } from './../../../redux/actions/UserActions'
 
 class Registrasi extends Component {
@@ -29,6 +30,11 @@ class Registrasi extends Component {
   continueRegistration() {
     this.props.onContinue(this.state)
     this.props.navigation.navigate('RegistrasiContinued')
+  }
+
+  goToLogin() {
+    this.props.onBack()
+    this.props.navigation.goBack()
   }
   
   render() {
@@ -90,7 +96,7 @@ class Registrasi extends Component {
           </View>
           <View style={styles.invisButton}>
             <InvisButton
-              onPress={() => this.props.navigation.goBack()}
+              onPress={() => this.goToLogin()}
               title="Login"
               type='default' />
           </View>
@@ -103,6 +109,9 @@ class Registrasi extends Component {
 const mapDispatchToProps = dispatch => ({
   onContinue: (user) => {
     dispatch(setUserRegistration(user))
+  },
+  onBack: () => {
+    dispatch(backToLogin())
   }
 })
 

@@ -34,42 +34,40 @@ export const userRegister = (data) => dispatch => {
     console.log(response);
     })
     .catch(error => {
-      dispatch({ type: CLEAR_REGISTRATION_LOADING })
-      dispatch({ type: REGISTRATION_ERROR_NOTIFICATION, messages: ["Oops, terjadi kesalahan"] })
       console.log(error.response);
-      // const errorMessages = error.response;
-      // Object.entries(errorMessages).forEach(entry => {
-      //   let key = entry[0];
-      //   let value = entry[1];
-      //   //use key and value here
-      // });
+      dispatch({ type: CLEAR_REGISTRATION_LOADING })
+      let errors = []
+      const errorMessages = error.response.data.error;
+      Object.entries(errorMessages).forEach(entry => {
+        let value = entry[1];
+        errors.push(value)
+      });
+      let completeErrors = errors.join(", ")
+      dispatch({ type: REGISTRATION_ERROR_NOTIFICATION, messages: completeErrors })
     })
 }
 
-export const userLogout = () => {
-  return (dispatch) => {
-    dispatch(userLogoutAction())
-  }
+export const userLogout = () => dispatch => {
+  dispatch({ type: USER_LOGOUT })
 }
 
-export const userLogoutAction = () => {
-  return {
-    type: USER_LOGOUT
-  }
-}
-
-export const setUserType = (type) => {
-  return {
+export const setUserType = (type) => dispatch => {
+  dispatch({
     type: SET_USER_TYPE,
     payload: {
       level: type
     }
-  }
+  })
+  dispatch({type: CLEAR_REGISTRATION_LOADING})
 }
 
-export const setUserRegistration = (payload) => {
-  return {
+export const setUserRegistration = (payload) => dispatch => {
+  dispatch({
     type: PREPARE_USER_REGISTRATION,
     payload: payload
-  }
+  })
+}
+
+export const backToLogin = () => dispatch => {
+  dispatch({type: CLEAR_REGISTRATION_LOADING})
 }
