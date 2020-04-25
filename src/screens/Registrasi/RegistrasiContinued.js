@@ -68,7 +68,7 @@ class RegistrasiContiued extends Component {
     }
   }
 
-  goBackButton(){
+  goBackButton() {
     this.props.onBack(this.state)
     this.props.navigation.goBack()
   }
@@ -77,6 +77,105 @@ class RegistrasiContiued extends Component {
     if (this.props !== prevProps) {
       this.showLoadingInfo()
     }
+  }
+
+  userDetailForm() {
+    let registerForm
+    switch (this.props.user.level) {
+      case "siswa":
+        registerForm = (
+          <View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="NIS"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ nis: text })}
+                value={this.state.nis}
+              />
+            </View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="Alamat"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ address: text })}
+                value={this.state.address}
+              />
+            </View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="Nomor Yang Dapat Dihubungi"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ phone_number: text })}
+                value={this.state.phone_number}
+              />
+            </View>
+          </View>
+        )
+        break;
+
+      case "wali":
+        registerForm = (
+          <View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="Alamat"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ address: text })}
+                value={this.state.address}
+              />
+            </View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="Nomor Yang Dapat Dihubungi"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ phone_number: text })}
+                value={this.state.phone_number}
+              />
+            </View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="NIS Putra/Putri"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ student_id: text })}
+                value={this.state.student_id}
+              />
+            </View>
+          </View>
+        )
+        break;
+
+      case "sekolah":
+        registerForm = (
+          <View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="NIP"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ nip: text })}
+                value={this.state.nip}
+              />
+            </View>
+            <View style={styles.input}>
+              <TextInput
+                style={styles.userInput}
+                placeholder="Jabatan"
+                TextColor="grey"
+                onChangeText={(text) => this.setState({ position: text })}
+                value={this.state.position}
+              />
+            </View>
+          </View>
+        )
+        break;
+    }
+    return registerForm
   }
 
   render() {
@@ -212,7 +311,7 @@ class RegistrasiContiued extends Component {
             source={require('./../../assets/images/smk_telkom.png')}
             style={styles.logo}
           />
-          {registerForm}
+          {this.userDetailForm()}
           {buttons}
         </View>
       </ScrollView>

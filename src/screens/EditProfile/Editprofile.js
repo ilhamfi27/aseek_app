@@ -95,15 +95,6 @@ class EditProfile extends Component {
                 value={this.state.phone_number}
               />
             </View>
-            <View style={styles.input}>
-              <TextInput
-                style={styles.userInput}
-                placeholder="NIS Putra/Putri"
-                TextColor="grey"
-                // onChangeText={(text) => this.setState({ student_id: text })}
-                value={this.state.student_id}
-              />
-            </View>
           </View>
         )
         break;
