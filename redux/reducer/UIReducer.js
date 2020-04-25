@@ -1,14 +1,14 @@
 import {
-  REGISTRATION_LOADING, 
-  CLEAR_REGISTRATION_LOADING,
-  REGISTRATION_ERROR_NOTIFICATION,
-  REGISTRATION_SUCCESS_NOTIFICATION,
+  LOADING, 
+  CLEAR_LOADING,
+  ERROR_NOTIFICATION,
+  SUCCESS_NOTIFICATION,
 } from '../types'
 
 const initialState = {
-  registrationLoading: false,
-  registrationFailed: false,
-  registrationSuccess: false,
+  loading: false,
+  requestFailed: false,
+  requestSuccess: false,
   errorMessages: "",
 }
 
@@ -17,32 +17,32 @@ export default uiReducer = (state = initialState, action) => {
   // We do not want to alter state directly in case
   // another action is altering it at the same time
   switch (action.type) {
-    case REGISTRATION_LOADING:
+    case LOADING:
       return {
         ...state,
         ...initialState,
-        registrationLoading: true,
+        loading: true,
       }
 
-    case CLEAR_REGISTRATION_LOADING:
+    case CLEAR_LOADING:
       return {
         ...state,
         ...initialState,
       }
 
-    case REGISTRATION_SUCCESS_NOTIFICATION:
+    case SUCCESS_NOTIFICATION:
       return {
         ...state,
-        registrationLoading: false,
-        registrationSuccess: true,
-        registrationFailed: false,
+        loading: false,
+        requestSuccess: true,
+        requestFailed: false,
       }
 
-    case REGISTRATION_ERROR_NOTIFICATION:
+    case ERROR_NOTIFICATION:
       return {
         ...state,
-        registrationLoading: false,
-        registrationFailed: true,
+        loading: false,
+        requestFailed: true,
         errorMessages: action.messages
       }
     

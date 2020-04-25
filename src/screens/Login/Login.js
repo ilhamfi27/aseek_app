@@ -57,13 +57,6 @@ class Login extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.userLoginCheck()) {
-      this.props.navigation.navigate('Home');
-      this._asyncStore();
-    }
-  }
-
   async _asyncStore() {
     try {
       await AsyncStorage.setItem('userToken', this.props.user.data.token);
@@ -72,9 +65,40 @@ class Login extends Component {
 
   forgetPasswordButtonPressed() {
     showMessage({
-      message: "Simple message",
-      type: "info",
+      message: "Oops! Fitur sedang dalam pengembangan",
+      type: "warning",
     });
+  }
+
+  showLoadingInfo() {
+    const loading = this.props.ui.loading
+    const success = this.props.ui.requestSuccess
+    const failed = this.props.ui.requestFailed
+    if (loading) {
+      showMessage({
+        message: "Mencoba Login...",
+        type: "info",
+        autoHide: false
+      })
+    }
+
+    if (failed) {
+      showMessage({
+        message: this.props.ui.errorMessages,
+        type: "danger",
+        duration: 3000
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props !== prevProps) {
+      this.showLoadingInfo()
+      if (this.userLoginCheck()) {
+        this.props.navigation.navigate('Home');
+        this._asyncStore();
+      }
+    }
   }
 
   render() {
@@ -134,6 +158,7 @@ const mapStateToProps = (state) => {
   console.log(state)
   return {
     user: state.user,
+    ui: state.ui,
   }
 }
 

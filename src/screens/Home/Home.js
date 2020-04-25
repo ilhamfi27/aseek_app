@@ -12,59 +12,73 @@ import { connect } from 'react-redux'
 import {
   userLogout
 } from './../../../redux/actions/UserActions'
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 class Home extends Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
-    
+
     return {
       title: params ? params.otherParam : '',
     };
   };
 
-  buttonLogoutPressed(){
+  buttonLogoutPressed() {
     this.props.onLogout();
     this.props.navigation.navigate("Login")
   }
 
-  render () {
+  showLoadingInfo() {
+    showMessage({
+      message: "Login berhasil",
+      description: `Selamat datang ${this.props.user.name}`,
+      type: "success",
+      duration: 3000,
+    })
+  }
+
+  componentDidMount() {
+    this.showLoadingInfo()
+  }
+
+  render() {
     return (
       <View style={mainStyle.container}>
-        <UserHeader {...this.props}/>
+        <UserHeader {...this.props} />
         <ScrollView>
           <View style={mainStyle.defaultBody}>
-            <MenuBoxButton 
-              title="Berangkat" 
+            <MenuBoxButton
+              title="Berangkat"
               onPress={() => this.props.navigation.navigate('Tracker')}
-              iconImage={require('./../../assets/images/berangkat.png')} 
+              iconImage={require('./../../assets/images/berangkat.png')}
             />
-            <MenuBoxButton 
-              title="Pulang" 
+            <MenuBoxButton
+              title="Pulang"
               onPress={() => this.props.navigation.navigate('Perjalanan')}
-              iconImage={require('./../../assets/images/pulang.png')} 
+              iconImage={require('./../../assets/images/pulang.png')}
             />
-            <MenuBoxButton 
-              title="Bank Soal" 
+            <MenuBoxButton
+              title="Bank Soal"
               onPress={() => this.props.navigation.navigate('BankSoal')}
-              iconImage={require('./../../assets/images/bank_soal.png')} 
+              iconImage={require('./../../assets/images/bank_soal.png')}
             />
-            <MenuBoxButton 
-              title="Ekstrakulikuler" 
+            <MenuBoxButton
+              title="Ekstrakulikuler"
               onPress={() => this.props.navigation.navigate('Ekstrakulikuler')}
-              iconImage={require('./../../assets/images/ekstrakulikuler.png')} 
+              iconImage={require('./../../assets/images/ekstrakulikuler.png')}
             />
-            <MenuBoxButton 
-              title="Rapor" 
+            <MenuBoxButton
+              title="Rapor"
               onPress={() => this.props.navigation.navigate('Rapor')}
-              iconImage={require('./../../assets/images/rapor.png')} 
+              iconImage={require('./../../assets/images/rapor.png')}
             />
-            <MenuBoxButton 
-              title="LOGOUT" 
+            <MenuBoxButton
+              title="LOGOUT"
               onPress={() => this.buttonLogoutPressed()}
             />
           </View>
         </ScrollView>
-        <Footer /> 
+        <Footer />
       </View>
     );
   }

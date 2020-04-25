@@ -40,9 +40,9 @@ class RegistrasiContiued extends Component {
   }
 
   showLoadingInfo() {
-    const loading = this.props.ui.registrationLoading
-    const success = this.props.ui.registrationSuccess
-    const failed = this.props.ui.registrationFailed
+    const loading = this.props.ui.loading
+    const success = this.props.ui.requestSuccess
+    const failed = this.props.ui.requestFailed
     if (loading) {
       showMessage({
         message: "Mendaftarkan...",
@@ -83,7 +83,7 @@ class RegistrasiContiued extends Component {
     let buttons;
     let registerForm;
 
-    if (this.props.ui.registrationSuccess) {
+    if (this.props.ui.requestSuccess) {
       buttons = (<View>
         <View style={styles.invisButton}>
           <InvisButton
