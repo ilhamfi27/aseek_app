@@ -13,6 +13,7 @@ import {
   userLogin
 } from './../../../redux/actions/UserActions'
 import { AsyncStorage } from '@react-native-community/async-storage';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 
 class Login extends Component {
@@ -69,6 +70,13 @@ class Login extends Component {
     } catch (e) { }
   }
 
+  forgetPasswordButtonPressed(){
+    showMessage({
+      message: "Simple message",
+      type: "info",
+    });
+  }
+
   render() {
     
     return (
@@ -113,7 +121,7 @@ class Login extends Component {
           <View style={styles.invisButton}>
             <InvisButton
               title="Lupa Password"
-              onPress={() => this.props.navigation.navigate('Home')}
+              onPress={() => this.forgetPasswordButtonPressed()}
               type='default' />
           </View>
         </View>

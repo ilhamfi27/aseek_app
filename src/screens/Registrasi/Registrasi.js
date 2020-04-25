@@ -26,7 +26,7 @@ class Registrasi extends Component {
     console.log(props);
   }
 
-  _continue() {
+  continueRegistration() {
     this.props.onContinue(this.state)
     this.props.navigation.navigate('RegistrasiContinued')
   }
@@ -84,7 +84,7 @@ class Registrasi extends Component {
           </View>
           <View style={styles.buttonBox}>
             <DefaultButton
-              onPress={() => this._continue()}
+              onPress={() => this.continueRegistration()}
               title="Selanjutnya"
               type='default' />
           </View>

@@ -52,6 +52,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flex: 3,
     paddingTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   Dropdown: {
     borderWidth: 1,

@@ -19,7 +19,7 @@ class UserHeader extends Component {
         />
         <View style={styles.userInformation}>
           <Text style={[styles.userInformationText, styles.usersName]}>
-            {this.props.user.data.name}
+            {this.props.user.name}
           </Text>
           <Text style={styles.userInformationText}>131010687</Text>
           <Text style={styles.userInformationText}>XII Rekayasa Perangkat Lunak A</Text>

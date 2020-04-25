@@ -28,6 +28,7 @@ import Registrasi from './src/screens/Registrasi/Registrasi';
 import RegistrasiContinued from './src/screens/Registrasi/RegistrasiContinued';
 import EditProfile from './src/screens/EditProfile/Editprofile';
 import LupaPassword from './src/screens/LupaPassword/LupaPassword';
+import FlashMessage from "react-native-flash-message";
 
 export default class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <AppContainer />
+        <FlashMessage position="top" />
       </Provider>
     );
   }
