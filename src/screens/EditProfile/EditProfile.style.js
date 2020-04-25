@@ -9,7 +9,7 @@ import {
       flexDirection: 'column',
       alignItems: 'center',
       backgroundColor: colors.white,
-      paddingTop: '30%',
+      paddingTop: '10%',
       height: '100%',
     },
     input: {

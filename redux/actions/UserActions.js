@@ -8,8 +8,10 @@ import {
   CLEAR_LOADING,
   SUCCESS_NOTIFICATION,
   ERROR_NOTIFICATION,
+  SET_USER_PROFILE,
 
 } from './../types'
+import AsyncStorage from '@react-native-community/async-storage';
 
 export const userLogin = (data) => dispatch => {
   dispatch({ type: LOADING })
@@ -19,8 +21,9 @@ export const userLogin = (data) => dispatch => {
       dispatch({ type: SUCCESS_NOTIFICATION })
       dispatch({
         type: USER_LOGIN,
-        payload: { ...response.data }
+        payload: response.data
       })
+      AsyncStorage.setItem('userToken', response.data.token);
     })
     .catch(error => {
       dispatch({ type: CLEAR_LOADING })
@@ -33,10 +36,10 @@ export const userRegister = (data) => dispatch => {
   console.log(data);
   dispatch({ type: LOADING })
   axios.post(`/register`, data)
-  .then(response => {
-    dispatch({ type: CLEAR_LOADING })
-    dispatch({ type: SUCCESS_NOTIFICATION })
-    console.log(response);
+    .then(response => {
+      dispatch({ type: CLEAR_LOADING })
+      dispatch({ type: SUCCESS_NOTIFICATION })
+      console.log(response);
     })
     .catch(error => {
       console.log(error.response);
@@ -56,6 +59,26 @@ export const userLogout = () => dispatch => {
   dispatch({ type: USER_LOGOUT })
 }
 
+export const userProfile = () => dispatch => {
+  AsyncStorage.getItem('userToken')
+    .then((res) => {
+      axios.get(`/user/profil`, {
+        headers: {
+          'Authorization': `Bearer ${res}`
+        }
+      })
+        .then(response => {
+          dispatch({ type: SET_USER_PROFILE, payload: response.data.data.profile })
+        })
+        .catch(error => {
+          console.log(error.response);
+        })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+
 export const setUserType = (type) => dispatch => {
   dispatch({
     type: SET_USER_TYPE,
@@ -63,7 +86,7 @@ export const setUserType = (type) => dispatch => {
       level: type
     }
   })
-  dispatch({type: CLEAR_LOADING})
+  dispatch({ type: CLEAR_LOADING })
 }
 
 export const setUserRegistration = (payload) => dispatch => {
@@ -74,5 +97,5 @@ export const setUserRegistration = (payload) => dispatch => {
 }
 
 export const backToLogin = () => dispatch => {
-  dispatch({type: CLEAR_LOADING})
+  dispatch({ type: CLEAR_LOADING })
 }

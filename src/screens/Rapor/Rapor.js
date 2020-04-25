@@ -10,7 +10,7 @@ import UserHeader from '../../components/Header/UserHeader'
 import Footer from '../../components/Footer/Footer'
 import DetailButton from '../../components/Buttons/DetailButton'
 export default class Rapor extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       nilai: [
@@ -32,22 +32,22 @@ export default class Rapor extends Component {
       ]
     }
   }
-  render () {
+  render() {
     const buttons = this.state.nilai.map((value, index) => {
       const { judul } = value
       return <DetailButton key={index} title={judul} rightText=">" onPress={() => {
         this.props.navigation.navigate('DetailNilai')
-      }}/>;
+      }} />;
     });
     return (
       <View style={mainStyle.container}>
-        <UserHeader />
+        <UserHeader {...this.props} />
         <ScrollView>
           <View style={mainStyle.defaultBody}>
             {buttons}
           </View>
         </ScrollView>
-        <Footer /> 
+        <Footer />
       </View>
     );
   }

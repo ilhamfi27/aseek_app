@@ -15,11 +15,14 @@ import {
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 class Home extends Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
-    const { params } = navigation.state;
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
 
+  static navigationOptions = ({ navigation, navigationOptions }) => {
     return {
-      title: params ? params.otherParam : '',
+      title: '',
     };
   };
 

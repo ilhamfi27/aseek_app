@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import {
   userLogin
 } from './../../../redux/actions/UserActions'
-import { AsyncStorage } from '@react-native-community/async-storage';
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 
@@ -56,13 +55,7 @@ class Login extends Component {
       this.props.navigation.navigate('Home');
     }
   }
-
-  async _asyncStore() {
-    try {
-      await AsyncStorage.setItem('userToken', this.props.user.data.token);
-    } catch (e) { }
-  }
-
+  
   forgetPasswordButtonPressed() {
     showMessage({
       message: "Oops! Fitur sedang dalam pengembangan",
@@ -96,7 +89,6 @@ class Login extends Component {
       this.showLoadingInfo()
       if (this.userLoginCheck()) {
         this.props.navigation.navigate('Home');
-        this._asyncStore();
       }
     }
   }

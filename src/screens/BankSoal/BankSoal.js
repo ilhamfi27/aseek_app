@@ -10,7 +10,7 @@ import UserHeader from '../../components/Header/UserHeader'
 import Footer from '../../components/Footer/Footer'
 import DetailButton from '../../components/Buttons/DetailButton'
 export default class BankSoal extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       mapel: [
@@ -33,20 +33,20 @@ export default class BankSoal extends Component {
       ]
     }
   }
-  render () {
+  render() {
     const buttons = this.state.mapel.map((value, index) => {
       const { judul, poin } = value
-      return <DetailButton key={index} title={judul} rightText={poin + " Poin"} onPress={() => {this.props.navigation.navigate('MapelBankSoal')}}/>;
+      return <DetailButton key={index} title={judul} rightText={poin + " Poin"} onPress={() => { this.props.navigation.navigate('MapelBankSoal') }} />;
     });
     return (
       <View style={mainStyle.container}>
-        <UserHeader />
+        <UserHeader {...this.props} />
         <ScrollView>
           <View style={mainStyle.defaultBody}>
             {buttons}
           </View>
         </ScrollView>
-        <Footer /> 
+        <Footer />
       </View>
     );
   }

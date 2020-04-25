@@ -3,6 +3,7 @@ import {
   USER_LOGOUT,
   SET_USER_TYPE,
   PREPARE_USER_REGISTRATION,
+  SET_USER_PROFILE,
 } from './../types'
 
 const initialState = {
@@ -31,6 +32,11 @@ export default userReducer = (state = initialState, action) => {
       }
     
     case PREPARE_USER_REGISTRATION:
+      return {
+        ...state,
+        ...action.payload
+      }
+    case SET_USER_PROFILE:
       return {
         ...state,
         ...action.payload
