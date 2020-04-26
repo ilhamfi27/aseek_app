@@ -106,7 +106,7 @@ class Login extends Component {
           <View style={styles.invisButton}>
             <InvisButton
               title="Lupa Password"
-              onPress={() => this.props.navigation.navigate('Home')}
+              onPress={() => this.props.navigation.navigate('ListSiswa')}
               type='default' />
           </View>
         </View>
