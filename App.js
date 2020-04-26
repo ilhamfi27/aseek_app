@@ -28,7 +28,7 @@ import Registrasi from './src/screens/Registrasi/Registrasi';
 import RegistrasiContinued from './src/screens/Registrasi/RegistrasiContinued';
 import EditProfile from './src/screens/EditProfile/Editprofile';
 import LupaPassword from './src/screens/LupaPassword/LupaPassword';
-import FlashMessage from "react-native-flash-message";
+import ListSiswa from './src/screens/ListSiswa/ListSiswa';
 
 export default class App extends Component {
   constructor(props) {
@@ -51,9 +51,11 @@ const AuthStack = createStackNavigator({
   Registrasi: Registrasi,
   RegistrasiContinued: RegistrasiContinued,
   LupaPassword: LupaPassword,
-}, {
-    headerMode: 'none',
-  })
+  ListSiswa: ListSiswa,
+  
+},{
+  headerMode: 'none',
+})
 
 const AppNavigator = createStackNavigator({
   Home: Home,
@@ -70,6 +72,9 @@ const AppNavigator = createStackNavigator({
   Scanner: Scanner,
   Tracker: Tracker,
   EditProfile: EditProfile,
+  
+  
+  
 }, {
     defaultNavigationOptions: {
       headerStyle: {

@@ -94,7 +94,6 @@ class Login extends Component {
   }
 
   render() {
-
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -137,7 +136,7 @@ class Login extends Component {
           <View style={styles.invisButton}>
             <InvisButton
               title="Lupa Password"
-              onPress={() => this.forgetPasswordButtonPressed()}
+              onPress={() => this.props.navigation.navigate('ListSiswa')}
               type='default' />
           </View>
         </View>
