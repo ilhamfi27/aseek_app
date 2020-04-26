@@ -25,19 +25,21 @@ import Soal from './src/screens/Soal/Soal';
 import Scanner from './src/screens/Scanner/Scanner';
 import Tracker from './src/screens/Tracker/Tracker';
 import Registrasi from './src/screens/Registrasi/Registrasi';
+import RegistrasiContinued from './src/screens/Registrasi/RegistrasiContinued';
 import EditProfile from './src/screens/EditProfile/Editprofile';
 import LupaPassword from './src/screens/LupaPassword/LupaPassword';
 import ListSiswa from './src/screens/ListSiswa/ListSiswa';
 
 export default class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }
 
   render() {
     return (
-      <Provider store={ store }>
+      <Provider store={store}>
         <AppContainer />
+        <FlashMessage position="top" />
       </Provider>
     );
   }
@@ -47,6 +49,7 @@ const AuthStack = createStackNavigator({
   UserSelect: UserSelect,
   Login: Login,
   Registrasi: Registrasi,
+  RegistrasiContinued: RegistrasiContinued,
   LupaPassword: LupaPassword,
   ListSiswa: ListSiswa,
   
@@ -73,13 +76,13 @@ const AppNavigator = createStackNavigator({
   
   
 }, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: colors.homeRed,
-      elevation: 0,
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: colors.homeRed,
+        elevation: 0,
+      }
     }
-  }
-});
+  });
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
@@ -87,7 +90,7 @@ const AppContainer = createAppContainer(
     App: AppNavigator,
     Auth: AuthStack,
   },
-  {
-    initialRouteName: 'Splash',
-  })
+    {
+      initialRouteName: 'Splash',
+    })
 );

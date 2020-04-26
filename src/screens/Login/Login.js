@@ -12,8 +12,7 @@ import { connect } from 'react-redux';
 import {
   userLogin
 } from './../../../redux/actions/UserActions'
-import Registrasi from '../Registrasi/Registrasi';
-import LupaPassword from '../LupaPassword/LupaPassword';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 
 class Login extends Component {
@@ -23,6 +22,7 @@ class Login extends Component {
       userCredentials: "",
       password: "",
     }
+    console.log(props);
   }
 
   submitHandler() {
@@ -46,19 +46,50 @@ class Login extends Component {
     })
   }
 
-  userLoginCheck(){
+  userLoginCheck() {
     return this.props.user.is_logged_in
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (this.userLoginCheck()) {
       this.props.navigation.navigate('Home');
     }
   }
+  
+  forgetPasswordButtonPressed() {
+    showMessage({
+      message: "Oops! Fitur sedang dalam pengembangan",
+      type: "warning",
+    });
+  }
 
-  componentDidUpdate(prevProps){
-    if (this.userLoginCheck()) {
-      this.props.navigation.navigate('Home');
+  showLoadingInfo() {
+    const loading = this.props.ui.loading
+    const success = this.props.ui.requestSuccess
+    const failed = this.props.ui.requestFailed
+    if (loading) {
+      showMessage({
+        message: "Mencoba Login...",
+        type: "info",
+        autoHide: false
+      })
+    }
+
+    if (failed) {
+      showMessage({
+        message: this.props.ui.errorMessages,
+        type: "danger",
+        duration: 3000
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props !== prevProps) {
+      this.showLoadingInfo()
+      if (this.userLoginCheck()) {
+        this.props.navigation.navigate('Home');
+      }
     }
   }
 
@@ -98,8 +129,8 @@ class Login extends Component {
           </View>
           <View style={styles.invisButton}>
             <InvisButton
-              title="Register"
-              onPress={() => this.props.navigation.navigate('Home')}
+              title="Registrasi"
+              onPress={() => this.props.navigation.navigate('Registrasi')}
               type='default' />
           </View>
           <View style={styles.invisButton}>
@@ -118,6 +149,7 @@ const mapStateToProps = (state) => {
   console.log(state)
   return {
     user: state.user,
+    ui: state.ui,
   }
 }
 

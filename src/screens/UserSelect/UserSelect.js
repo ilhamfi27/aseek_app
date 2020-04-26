@@ -8,6 +8,9 @@ import {
 import styles from './UserSelect.style'
 import DefaultButton from './../../components/Buttons/DefaultButton'
 import { connect } from 'react-redux';
+import {
+  setUserType
+} from './../../../redux/actions/UserActions'
 
 class UserSelect extends Component {
   userLoginCheck(){
@@ -15,11 +18,14 @@ class UserSelect extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props);
-    
     if (this.userLoginCheck()) {
       this.props.navigation.navigate('Home');
     }
+  }
+
+  setTheUserType(type){
+    this.props.userChoose(type);
+    this.props.navigation.navigate('Login')
   }
 
   render() {
@@ -36,15 +42,15 @@ class UserSelect extends Component {
         <View style={styles.buttonBox}>
           <DefaultButton
             title="Teacher"
-            onPress={() => this.props.navigation.navigate('Login')}
+            onPress={() => this.setTheUserType("sekolah")}
             type='default' />
           <DefaultButton
             title="Parent"
-            onPress={() => this.props.navigation.navigate('Login')}
+            onPress={() => this.setTheUserType("wali")}
             type='default' />
           <DefaultButton
             title="Student"
-            onPress={() => this.props.navigation.navigate('Login')}
+            onPress={() => this.setTheUserType("siswa")}
             type='default' />
         </View>
       </View>
@@ -58,4 +64,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(UserSelect)
+const mapDispatchToProps = dispatch => ({
+  userChoose: (type) => {
+    dispatch(setUserType(type));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSelect)

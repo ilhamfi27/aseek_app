@@ -7,8 +7,53 @@ import {
 import ActionButton from './../Buttons/ActionButton'
 import styles from './UserHeader.style'
 import { connect } from 'react-redux';
+import {
+  userProfile
+} from './../../../redux/actions/UserActions'
 
 class UserHeader extends Component {
+  constructor(props) {
+    super(props)
+    console.log(props);
+    this.props.onLogin()
+  }
+
+  showEditButton() {
+    if (this.props.navigation.state.routeName == "Home") {
+      return <ActionButton
+        title="Edit"
+        onPress={() => this.props.navigation.navigate('EditProfile')}
+        iconImage={require('./../../assets/images/white_pencil.png')}
+      />
+    }
+    return null
+  }
+
+  showUserIdNumber() {
+    switch (this.props.user.level) {
+      case 'siswa':
+        return <View>
+          <Text style={styles.userInformationText}>{this.props.user.nis}</Text>
+          <Text style={styles.userInformationText}>SISWA</Text>
+        </View>
+        break;
+
+      case 'sekolah':
+        return <View>
+          <Text style={styles.userInformationText}>{this.props.user.nip}</Text>
+          <Text style={styles.userInformationText}>GURU / SEKOLAH</Text>
+        </View>
+        break;
+
+      case 'wali':
+        <Text style={styles.userInformationText}>WALI MURID</Text>
+        break;
+      default:
+        null
+        break;
+    }
+  }
+
   render() {
     return (
       <View style={styles.header}>
@@ -18,14 +63,11 @@ class UserHeader extends Component {
           style={styles.userImage}
         />
         <View style={styles.userInformation}>
-          <Text style={[styles.userInformationText, styles.usersName]}>{ this.props.user.data.username }</Text>
-          <Text style={styles.userInformationText}>131010687</Text>
-          <Text style={styles.userInformationText}>XII Rekayasa Perangkat Lunak A</Text>
-          <ActionButton
-            title="Edit"
-            onPress={() => this.props.navigation.navigate('EditProfile')}
-            iconImage={require('./../../assets/images/white_pencil.png')}
-          />
+          <Text style={[styles.userInformationText, styles.usersName]}>
+            {this.props.user.name}
+          </Text>
+          {this.showUserIdNumber()}
+          {this.showEditButton()}
         </View>
       </View>
     );
@@ -38,4 +80,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(UserHeader)
+const mapDispatchToProps = dispatch => ({
+  onLogin: () => {
+    dispatch(userProfile());
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)

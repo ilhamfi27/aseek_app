@@ -2,6 +2,9 @@ import {
   StyleSheet,
 } from 'react-native';
 import colors from '../../res/colors'
+import {
+  Dimensions
+} from "react-native";
 
 export default StyleSheet.create({
   container: {
@@ -10,7 +13,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     paddingTop: '30%',
-    height: '100%',
+    height: Math.round(Dimensions.get('window').height),
   },
   input: {
     borderWidth: 1,

@@ -8,7 +8,7 @@ import UserHeader from '../../components/Header/UserHeader'
 import Footer from '../../components/Footer/Footer'
 import DefaultInformationButton from '../../components/Buttons/DefaultInformationButton'
 export default class Ekstrakulikuler extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       ekstrakulikuler: [
@@ -40,19 +40,19 @@ export default class Ekstrakulikuler extends Component {
       ]
     }
   }
-  render () {
+  render() {
     const buttons = this.state.ekstrakulikuler.map((value, index) => {
-      return <DefaultInformationButton key={index} data={value} onPress={() => { null }}/>;
+      return <DefaultInformationButton key={index} data={value} onPress={() => { null }} />;
     });
     return (
       <View style={mainStyle.container}>
-        <UserHeader />
+        <UserHeader {...this.props} />
         <ScrollView>
           <View style={mainStyle.redBody}>
             {buttons}
           </View>
         </ScrollView>
-        <Footer /> 
+        <Footer />
       </View>
     );
   }
