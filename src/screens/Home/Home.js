@@ -26,6 +26,10 @@ class Home extends Component {
     };
   };
 
+  componentDidMount() {
+    this.showLoadingInfo()
+  }
+
   buttonLogoutPressed() {
     this.props.onLogout();
     this.props.navigation.navigate("Login")
@@ -40,15 +44,18 @@ class Home extends Component {
     })
   }
 
-  componentDidMount() {
-    this.showLoadingInfo()
+  devFeatureButtons() {
+    showMessage({
+      message: "Oops! Fitur sedang dalam pengembangan",
+      type: "warning",
+    });
   }
 
-  render() {
-    return (
-      <View style={mainStyle.container}>
-        <UserHeader {...this.props} />
-        <ScrollView>
+  menuButtons() {
+    let buttons
+    switch (this.props.user.level) {
+      case 'siswa':
+        buttons = (
           <View style={mainStyle.defaultBody}>
             <MenuBoxButton
               title="Berangkat"
@@ -79,6 +86,58 @@ class Home extends Component {
               title="LOGOUT"
               onPress={() => this.buttonLogoutPressed()}
             />
+          </View>
+        )
+        break;
+
+      case 'wali':
+        buttons = (
+          <View style={mainStyle.defaultBody}>
+            <MenuBoxButton
+              title="LOKASI ANAK"
+              onPress={() => this.devFeatureButtons()}
+            />
+            <MenuBoxButton
+              title="Rapor"
+              onPress={() => this.props.navigation.navigate('Rapor')}
+              iconImage={require('./../../assets/images/rapor.png')}
+            />
+            <MenuBoxButton
+              title="LOGOUT"
+              onPress={() => this.buttonLogoutPressed()}
+            />
+          </View>
+        )
+        break;
+
+      case 'sekolah':
+        buttons = (
+          <View style={mainStyle.defaultBody}>
+            <MenuBoxButton
+              title="LOKASI ANAK"
+              onPress={() => this.devFeatureButtons()}
+            />
+            <MenuBoxButton
+              title="LOGOUT"
+              onPress={() => this.buttonLogoutPressed()}
+            />
+          </View>
+        )
+        break;
+
+      default:
+        break;
+    }
+    return buttons
+  }
+
+  render() {
+    return (
+      <View style={mainStyle.container}>
+        <UserHeader {...this.props} />
+        <ScrollView>
+          <View>
+            {this.menuButtons()}
           </View>
         </ScrollView>
         <Footer />

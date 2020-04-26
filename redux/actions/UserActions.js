@@ -68,7 +68,7 @@ export const userProfile = () => dispatch => {
         }
       })
         .then(response => {
-          dispatch({ type: SET_USER_PROFILE, payload: response.data.data.profile })
+          dispatch({ type: SET_USER_PROFILE, payload: response.data.profile })
         })
         .catch(error => {
           console.log(error.response);
