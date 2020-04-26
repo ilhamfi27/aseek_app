@@ -18,50 +18,53 @@ import ListSiswaStyle from './ListSiswa.style';
 class ListSiswa extends Component {
   render() {
     return (
-    <ScrollView>
         <View style={styles.container}>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Ujang"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Mamat"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Andi"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Sucipto"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Udin"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Andre"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Saipul"
-              type='default' />
-          </View>
-          <View style={styles.buttonBox}>
-            <DefaultButton
-              title="Rokiah"
-              type='default' />
-          </View>
+        <UserHeader />
+            <ScrollView>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Ujang"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Mamat"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Andi"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Sucipto"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Udin"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Andre"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Saipul"
+                  type='default' />
+              </View>
+              <View style={styles.buttonBox}>
+                <DefaultButton
+                  title="Ujang"
+                  type='default' />
+              </View>
+              </ScrollView>
+          <Footer />
         </View>
-      </ScrollView>
+     
     );
   }
 };

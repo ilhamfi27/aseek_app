@@ -68,7 +68,6 @@ const AppNavigator = createStackNavigator({
   Soal: Soal,
   Scanner: Scanner,
   Tracker: Tracker,
-  
   EditProfile: EditProfile,
   
   
