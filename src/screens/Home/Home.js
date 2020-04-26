@@ -10,13 +10,15 @@ import Footer from './../../components/Footer/Footer'
 import MenuBoxButton from './../../components/Buttons/MenuBoxButton'
 import { connect } from 'react-redux'
 import {
-  userLogout
+  userLogout,
+  userProfile
 } from './../../../redux/actions/UserActions'
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.props.onLogin()
     console.log(props);
   }
 
@@ -155,6 +157,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onLogout: () => {
     dispatch(userLogout());
+  },
+  onLogin: () => {
+    dispatch(userProfile());
   }
 });
 

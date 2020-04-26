@@ -7,15 +7,10 @@ import {
 import ActionButton from './../Buttons/ActionButton'
 import styles from './UserHeader.style'
 import { connect } from 'react-redux';
-import {
-  userProfile
-} from './../../../redux/actions/UserActions'
 
 class UserHeader extends Component {
   constructor(props) {
     super(props)
-    console.log(props);
-    this.props.onLogin()
   }
 
   showEditButton() {
@@ -46,7 +41,7 @@ class UserHeader extends Component {
         break;
 
       case 'wali':
-        <Text style={styles.userInformationText}>WALI MURID</Text>
+        return <Text style={styles.userInformationText}>WALI MURID</Text>
         break;
       default:
         null
@@ -80,10 +75,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  onLogin: () => {
-    dispatch(userProfile());
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)
+export default connect(mapStateToProps, null)(UserHeader)
