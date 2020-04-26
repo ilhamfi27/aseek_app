@@ -19,7 +19,6 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.props.onLogin()
-    console.log(props);
   }
 
   static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -117,7 +116,7 @@ class Home extends Component {
           <View style={mainStyle.defaultBody}>
             <MenuBoxButton
               title="LOKASI ANAK"
-              onPress={() => this.devFeatureButtons()}
+              onPress={() => this.props.navigation.navigate('ListSiswa')}
             />
             <MenuBoxButton
               title="LOGOUT"

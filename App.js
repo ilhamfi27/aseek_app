@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import store from './redux/store'
+import FlashMessage from "react-native-flash-message";
 
 import colors from './src/res/colors'
 
@@ -51,8 +52,6 @@ const AuthStack = createStackNavigator({
   Registrasi: Registrasi,
   RegistrasiContinued: RegistrasiContinued,
   LupaPassword: LupaPassword,
-  ListSiswa: ListSiswa,
-  
 },{
   headerMode: 'none',
 })
@@ -72,9 +71,7 @@ const AppNavigator = createStackNavigator({
   Scanner: Scanner,
   Tracker: Tracker,
   EditProfile: EditProfile,
-  
-  
-  
+  ListSiswa: ListSiswa,
 }, {
     defaultNavigationOptions: {
       headerStyle: {
