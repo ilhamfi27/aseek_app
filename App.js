@@ -30,6 +30,7 @@ import RegistrasiContinued from './src/screens/Registrasi/RegistrasiContinued';
 import EditProfile from './src/screens/EditProfile/Editprofile';
 import LupaPassword from './src/screens/LupaPassword/LupaPassword';
 import ListSiswa from './src/screens/ListSiswa/ListSiswa';
+import UserTrack from './src/screens/UserTrack/UserTrack';
 
 export default class App extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ const AppNavigator = createStackNavigator({
   Tracker: Tracker,
   EditProfile: EditProfile,
   ListSiswa: ListSiswa,
+  UserTrack: UserTrack,
 }, {
     defaultNavigationOptions: {
       headerStyle: {

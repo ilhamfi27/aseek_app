@@ -12,7 +12,8 @@ import { connect } from 'react-redux';
 import ListSiswaStyle from './ListSiswa.style';
 import { showMessage, hideMessage } from "react-native-flash-message";
 import {
-  getAllStudent
+  getAllStudent,
+  getStudentTrack
 } from '../../../redux/actions/DataActions'
 
 class ListSiswa extends Component {
@@ -22,7 +23,6 @@ class ListSiswa extends Component {
 
   componentDidMount() {
     this.props.onLoad()
-    console.log(this.props);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -49,7 +49,7 @@ class ListSiswa extends Component {
       })
     }
   }
-  
+
   unavailableButtonPressed() {
     showMessage({
       message: "Oops! Fitur sedang dalam pengembangan",
@@ -57,13 +57,17 @@ class ListSiswa extends Component {
     });
   }
 
+  siswaSelected(id) {
+    this.props.trackStudent(id)
+    this.props.navigation.navigate('UserTrack')
+  }
+
   listSiswa() {
     return this.props.student.students.map((value, index) => {
-      return <View style={styles.buttonBox}>
+      return <View key={index} style={styles.buttonBox}>
         <DefaultButton
-          key={index}
           title={value.name}
-          onPress={this.unavailableButtonPressed}
+          onPress={() => this.siswaSelected(value.id)}
           type='default' />
       </View>;
     });
@@ -92,6 +96,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onLoad: () => {
     dispatch(getAllStudent())
+  },
+  trackStudent: (id) => {
+    dispatch(getStudentTrack(id))
   }
 })
 

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { AsyncStorage } from '@react-native-community/async-storage';
 
 const baseURL = 'https://aseek.herokuapp.com/api/v1';
-// const baseURL = 'http://192.168.1.8:8000/api/v1';
+// const baseURL = 'http://192.168.1.7:8000/api/v1';
 
 export default axios.create({
   baseURL: baseURL,
