@@ -11,14 +11,12 @@ import MenuBoxButton from './../../components/Buttons/MenuBoxButton'
 import { connect } from 'react-redux'
 import {
   userLogout,
-  userProfile
 } from './../../../redux/actions/UserActions'
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.props.onLogin()
   }
 
   static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -157,9 +155,6 @@ const mapDispatchToProps = dispatch => ({
   onLogout: () => {
     dispatch(userLogout());
   },
-  onLogin: () => {
-    dispatch(userProfile());
-  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

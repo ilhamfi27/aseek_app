@@ -12,7 +12,6 @@ import InvisButton from './../../components/Buttons/invisButton'
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import {
-  userProfile
 } from './../../../redux/actions/UserActions'
 import { showMessage, hideMessage } from "react-native-flash-message";
 
@@ -20,7 +19,6 @@ class EditProfile extends Component {
   constructor(props) {
     super(props)
     console.log(props);
-    this.props.onLogin()
     this.state = {
       name: this.props.user.name,
       username: this.props.user.username,
@@ -188,10 +186,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  onLogin: () => {
-    dispatch(userProfile());
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)
+export default connect(mapStateToProps, null)(EditProfile)

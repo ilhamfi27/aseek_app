@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   is_logged_in: false,
+  profile_completed: false,
 }
 
 export default userReducer = (state = initialState, action) => {
@@ -16,6 +17,8 @@ export default userReducer = (state = initialState, action) => {
   // another action is altering it at the same time
   switch (action.type) {
     case USER_LOGIN:
+      console.log(action.payload);
+      
       return {
         ...state,
         is_logged_in: true,
@@ -23,7 +26,9 @@ export default userReducer = (state = initialState, action) => {
       }
     
     case USER_LOGOUT:
-      return initialState
+      return {
+        ...initialState
+      }
 
     case SET_USER_TYPE:
       return {
@@ -39,6 +44,7 @@ export default userReducer = (state = initialState, action) => {
     case SET_USER_PROFILE:
       return {
         ...state,
+        profile_completed: true,
         ...action.payload
       }
     

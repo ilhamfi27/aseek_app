@@ -23,7 +23,10 @@ export const userLogin = (data) => dispatch => {
         type: USER_LOGIN,
         payload: response.data
       })
-      AsyncStorage.setItem('userToken', response.data.token);
+      AsyncStorage.setItem('userToken', response.data.token)
+      .then(s => {
+        dispatch(userProfile())
+      });
     })
     .catch(error => {
       dispatch({ type: CLEAR_LOADING })
@@ -57,6 +60,7 @@ export const userRegister = (data) => dispatch => {
 
 export const userLogout = () => dispatch => {
   dispatch({ type: USER_LOGOUT })
+  AsyncStorage.removeItem('userToken');
 }
 
 export const userProfile = () => dispatch => {

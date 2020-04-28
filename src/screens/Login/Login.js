@@ -47,7 +47,7 @@ class Login extends Component {
   }
 
   userLoginCheck() {
-    return this.props.user.is_logged_in
+    return this.props.user.is_logged_in && this.props.user.profile_completed
   }
 
   componentDidMount() {
